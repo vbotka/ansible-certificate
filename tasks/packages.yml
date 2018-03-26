@@ -1,0 +1,43 @@
+---
+
+- debug: msg="ansible_os_family = {{ ansible_os_family }}"
+  when: certificate_debug|lower == "yes"
+
+# FreeBSD
+- name: Install packages FreeBSD
+  pkgng: >
+    name="{{ item }}"
+    state="present"
+  with_items: "{{ certificate_packages }}"
+  when:
+    - ansible_os_family == "FreeBSD"
+    - freebsd_install_method|lower == "packages"
+
+- name: Install ports FreeBSD
+  portinstall: >
+    name="{{ item }}"
+    state="present"
+    use_packages="{{ freebsd_use_packages }}"
+  with_items: "{{ certificate_packages }}"
+  when:
+    - ansible_os_family == "FreeBSD"
+    - freebsd_install_method|lower == "ports"
+
+# Debian
+- name: Install packages Debian
+  apt: >
+    name="{{ item }}"
+    state="installed"
+  with_items: "{{ certificate_packages }}"
+  when: ansible_os_family == "Debian"
+        
+# RedHat
+- name: Install packages RedHat
+  yum: >
+    name="{{ item }}"
+    state="installed"
+  with_items: "{{ certificate_packages }}"
+  when: ansible_os_family == "RedHat"
+  
+# EOF
+...

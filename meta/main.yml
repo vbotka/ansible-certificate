@@ -1,0 +1,26 @@
+galaxy_info:
+  author: Vladimir Botka
+  description: Install certificate from github.com/vbotka/certificate.
+  company: https://botka.link
+  github_branch: master
+  license: BSD
+  min_ansible_version: 2.4
+  platforms:
+    - name: FreeBSD
+      versions:
+        - 10.3
+        - 11.0
+    - name: Ubuntu
+      versions:
+        - bionic
+        - xenial
+        - zesty
+        - artful
+    - name: Debian
+    - name: Fedora
+    - name: EL
+  galaxy_tags:
+    - installer
+    - security
+    - letsencrypt
+dependencies: []

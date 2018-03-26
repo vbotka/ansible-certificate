@@ -1,0 +1,18 @@
+---
+
+#- name: Configure cron MAILTO={{ certificate_cron_mailto }}
+#  cronvar: >
+#    name="MAILTO"
+#    value="{{ certificate_cron_mailto }}"
+#    user="{{ certificate_cron_user }}"
+
+#- name: Configure cron files certificate check
+#  cron: >
+#    name="check certificate of file"
+#    minute="{{ certificate_cron_minute }}"
+#    hour="{{ certificate_cron_hour }}"
+#    job="{{ certificate_cron_command }}"
+#    user="{{ certificate_cron_user }}"
+
+# EOF
+...

@@ -1,0 +1,24 @@
+---
+
+- name: Generate an OpenSSL private key (default 4096 bits, RSA)
+  openssl_privatekey: >
+    path="{{ certificate_dir_private }}/{{ item.private }}"
+  with_items: "{{ certificate_self_signed }}"
+
+- name: Generate an OpenSSL Certificate Signing Request
+  openssl_csr: >
+    path="{{ certificate_dir_csr }}/{{ item.csr }}"
+    privatekey_path="{{ certificate_dir_private }}/{{ item.private }}"
+    common_name="{{ item.CN }}"
+  with_items: "{{ certificate_self_signed }}"
+
+- name: Generate a Self Signed OpenSSL certificate
+  openssl_certificate: >
+    path="{{ certificate_dir_certs }}/{{ item.crt }}"
+    privatekey_path="{{ certificate_dir_private }}/{{ item.private }}"
+    csr_path="{{ certificate_dir_csr }}/{{ item.csr }}"
+    provider="selfsigned"
+  with_items: "{{ certificate_self_signed }}"
+
+# EOF
+...

@@ -1,0 +1,50 @@
+---
+
+- name: Create {{ certificate_dir }}
+  file: >
+    path="{{ certificate_dir }}"
+    state="directory"
+    owner="{{ certificate_owner }}"
+    group="{{ certificate_group }}"
+    mode="{{ certificate_dir_mode }}"
+  tags: certificate_dirs
+
+- name: Create {{ certificate_dir }}/csr
+  file: >
+    path="{{ certificate_dir }}/csr"
+    state="directory"
+    owner="{{ certificate_owner }}"
+    group="{{ certificate_group }}"
+    mode="{{ certificate_dir_mode }}"
+  tags: certificate_dirs
+
+- name: Create {{ certificate_dir }}/certs
+  file: >
+    path="{{ certificate_dir }}/certs"
+    state="directory"
+    owner="{{ certificate_owner }}"
+    group="{{ certificate_group }}"
+    mode="{{ certificate_dir_mode }}"
+  tags: certificate_dirs
+
+- name: Link {{ certificate_dir }}/crt
+  file: >
+    src="{{ certificate_dir }}/certs"
+    dest="{{ certificate_dir }}/crt"
+    state="link"
+    owner="{{ certificate_owner }}"
+    group="{{ certificate_group }}"
+  when: certificate_link_crt|lower == "yes"
+  tags: certificate_dirs
+
+- name: Create {{ certificate_dir }}/private
+  file: >
+    path="{{ certificate_dir }}/private"
+    state="directory"
+    owner="{{ certificate_owner }}"
+    group="{{ certificate_dir_private_group }}"
+    mode="{{ certificate_dir_private_mode }}"
+  tags: certificate_dirs
+
+# EOF
+...

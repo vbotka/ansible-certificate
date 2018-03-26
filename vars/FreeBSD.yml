@@ -1,0 +1,14 @@
+---
+# certificate vars for FreeBSD
+
+certificate_packages:
+  - security/py-openssl
+  - security/py-acme-tiny
+
+# directories
+certificate_group: "wheel"
+certificate_dir_private_group: "wheel"
+certificate_dir_private_mode: "0755"
+
+# EOF
+...

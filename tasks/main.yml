@@ -1,0 +1,35 @@
+---
+
+- name: Add {{ ansible_os_family }} specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+  tags:
+    - certificate_vars
+    - certificate_all
+
+- import_tasks: packages.yml
+  tags:
+    - certificate_packages
+    - certificate_all
+
+- import_tasks: cert-dirs.yml
+  tags:
+    - certificate_dirs
+    - certificate_all
+
+- import_tasks: configure.yml
+  tags:
+    - certificate_configure
+    - certificate_all
+
+- import_tasks: cert-self-signed.yml
+  tags:
+    - certificate_self_signed
+    - certificate_all
+
+- import_tasks: cron.yml
+  tags:
+    - certificate_cron
+    - certificate_all
+
+# EOF
+...
