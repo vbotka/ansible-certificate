@@ -1,6 +1,6 @@
 galaxy_info:
   author: Vladimir Botka
-  description: Install certificate from github.com/vbotka/certificate.
+  description: Generate and/or check OpenSSL certificates.
   company: https://botka.link
   github_branch: master
   license: BSD
