@@ -2,12 +2,12 @@
 # certificate vars for RedHat
 
 certificate_packages:
-  - python3-openssl
+  - pyOpenSSL
   - acme-tiny
 
 # directories
 certificate_group: "root"
-certificate_dir_private_group: "ssl-cert"
+certificate_dir_private_group: "root"
 certificate_dir_private_mode: "0710"
 
 # EOF

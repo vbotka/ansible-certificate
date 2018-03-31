@@ -4,6 +4,7 @@
   openssl_privatekey: >
     path="{{ certificate_dir_private }}/{{ item.private }}"
   with_items: "{{ certificate_self_signed }}"
+  when: not ansible_check_mode
 
 - name: Generate an OpenSSL Certificate Signing Request
   openssl_csr: >
@@ -11,6 +12,7 @@
     privatekey_path="{{ certificate_dir_private }}/{{ item.private }}"
     common_name="{{ item.CN }}"
   with_items: "{{ certificate_self_signed }}"
+  when: not ansible_check_mode
 
 - name: Generate a Self Signed OpenSSL certificate
   openssl_certificate: >
@@ -19,6 +21,7 @@
     csr_path="{{ certificate_dir_csr }}/{{ item.csr }}"
     provider="selfsigned"
   with_items: "{{ certificate_self_signed }}"
+  when: not ansible_check_mode
 
 # EOF
 ...
