@@ -2,7 +2,9 @@
 # certificate vars
 
 #certificate_self_signed:
-#    - { CN: "example.com", private: "example_com.pem", csr: "example_com.csr", crt: "example_com.crt" }
+#  - { CN: "example.com", private: "example_com.pem", csr: "example_com.csr", crt: "example_com.crt" }
+#certificate_acme:
+#  - { CN: "example.com", private: "example_com.pem", csr: "example_com.csr", crt: "example_com.crt", challenge: "example.com" }
 
 # EOF
 ...

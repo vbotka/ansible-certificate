@@ -1,5 +1,15 @@
 ---
 
+- name: DEBUG Print variables
+  vars:
+    msg: |
+         certificate_dir_private [ {{ certificate_dir_private }} ]
+         certificate_dir_csr [ {{ certificate_dir_csr }} ]
+         certificate_dir_certs [ {{ certificate_dir_certs }} ]
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: certificate_debug|lower == "yes"
+
 - name: Generate an OpenSSL private key (default 4096 bits, RSA)
   openssl_privatekey: >
     path="{{ certificate_dir_private }}/{{ item.private }}"

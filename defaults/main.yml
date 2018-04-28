@@ -8,33 +8,28 @@ certificate_debug: "no"
 freebsd_install_method: "ports"
 freebsd_use_packages: "yes"
 
-# directories
+# ssl directories
 certificate_dir: "/etc/ssl"
 certificate_dir_csr: "{{ certificate_dir }}/csr"
 certificate_dir_certs: "{{ certificate_dir }}/certs"
 certificate_dir_private: "{{ certificate_dir }}/private"
-certificate_link_crt: "yes"
 certificate_owner: "root"
 certificate_dir_mode: "0755"
 
-# openssl config
-certificate_openssl_conf_dir: "/etc/ssl"
-certificate_openssl_conf: "{{ certificate_openssl_conf_dir }}/openssl.cnf"
-certificate_openssl_PAR1: "par1"
-certificate_openssl_PAR2: "par2"
-certificate_openssl_items:
-  - { var: "PAR1", value: "{{ certificate_openssl_PAR1 }}" }
-  - { var: "PAR2", value: "{{ certificate_openssl_PAR2 }}" }
-
-# cron
-certificate_cron_user: "root"
-certificate_cron_mailto: "root"
-certificate_cron_hour: "*/4"
-certificate_cron_minute: "20"
-certificate_cron_command: "/root/bin/certificate --version"
+# acme directories
+certificate_acme_dir: "/etc/letsencrypt"
+certificate_acme_dir_csr: "{{ certificate_dir }}/csr"
+certificate_acme_dir_certs: "{{ certificate_dir }}/archive"
+certificate_acme_dir_private: "{{ certificate_dir }}/keys"
+certificate_acme_dir_challenges: "{{ certificate_dir }}/challenges"
+certificate_acme_owner: "root"
+certificate_acme_dir_mode: "0755"
 
 # self-signed certs
 certificate_self_signed: {}
+
+# Lets Encrypt certs
+certificate_acme: {}
 
 # EOF
 ...

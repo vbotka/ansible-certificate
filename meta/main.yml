@@ -1,6 +1,6 @@
 galaxy_info:
   author: Vladimir Botka
-  description: Generate and/or check OpenSSL certificates.
+  description: Generate and/or  OpenSSL certificates.
   company: https://botka.link
   github_branch: master
   license: BSD
@@ -10,6 +10,7 @@ galaxy_info:
       versions:
         - 10.3
         - 11.0
+        - 11.1
     - name: Ubuntu
       versions:
         - bionic
@@ -20,7 +21,8 @@ galaxy_info:
     - name: Fedora
     - name: EL
   galaxy_tags:
-    - installer
     - security
+    - certificate
+    - openssl
     - letsencrypt
 dependencies: []

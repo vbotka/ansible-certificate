@@ -16,19 +16,14 @@
     - certificate_dirs
     - certificate_all
 
-- import_tasks: configure.yml
-  tags:
-    - certificate_configure
-    - certificate_all
-
 - import_tasks: cert-self-signed.yml
   tags:
     - certificate_self_signed
     - certificate_all
 
-- import_tasks: cron.yml
+- import_tasks: cert-acme.yml
   tags:
-    - certificate_cron
+    - certificate_acme
     - certificate_all
 
 # EOF
