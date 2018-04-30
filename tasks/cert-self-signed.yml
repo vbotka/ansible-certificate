@@ -13,6 +13,8 @@
 - name: Generate an OpenSSL private key (default 4096 bits, RSA)
   openssl_privatekey: >
     path="{{ certificate_dir_private }}/{{ item.private }}"
+    passphrase="{{ item.passphrase|default(omit) }}"
+    cipher="{{ item.cipher|default(omit) }}"
   with_items: "{{ certificate_self_signed }}"
   when: not ansible_check_mode
 
@@ -20,6 +22,7 @@
   openssl_csr: >
     path="{{ certificate_dir_csr }}/{{ item.csr }}"
     privatekey_path="{{ certificate_dir_private }}/{{ item.private }}"
+    privatekey_passphrase="{{ item.passphrase|default(omit) }}"
     common_name="{{ item.CN }}"
   with_items: "{{ certificate_self_signed }}"
   when: not ansible_check_mode
@@ -28,6 +31,7 @@
   openssl_certificate: >
     path="{{ certificate_dir_certs }}/{{ item.crt }}"
     privatekey_path="{{ certificate_dir_private }}/{{ item.private }}"
+    privatekey_passphrase="{{ item.passphrase|default(omit) }}"
     csr_path="{{ certificate_dir_csr }}/{{ item.csr }}"
     provider="selfsigned"
   with_items: "{{ certificate_self_signed }}"

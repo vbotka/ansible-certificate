@@ -2,9 +2,27 @@
 # certificate vars
 
 #certificate_self_signed:
-#  - { CN: "example.com", private: "example_com.pem", csr: "example_com.csr", crt: "example_com.crt" }
+#  - { CN: "example.com",
+#      private: "example_com.pem",
+#      csr: "example_com.csr",
+#      crt: "example_com.crt" }
+       
+# passphrase and cipher are optional and are required together
+#certificate_self_signed:
+#  - { CN: "example.com",
+#      private: "example_com.pem",
+#      csr: "example_com.csr",
+#      crt: "example_com.crt",
+#      passphrase: "passphrase",
+#      cipher: "AES-256-CBC" }
+
+# [TODO] not tested yet
 #certificate_acme:
-#  - { CN: "example.com", private: "example_com.pem", csr: "example_com.csr", crt: "example_com.crt", challenge: "example.com" }
+#  - { CN: "example.com",
+#      private: "example_com.pem",
+#      csr: "example_com.csr",
+#      crt: "example_com.crt",
+#      challenge: "example.com" }
 
 # EOF
 ...

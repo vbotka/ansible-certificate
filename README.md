@@ -27,7 +27,8 @@ None.
 
 References
 ----------
-- [Generate and/or check OpenSSL certificates](https://docs.ansible.com/ansible/2.4/openssl_certificate_module.html)
+- [SSL and TLS Deployment Best Practices](https://github.com/ssllabs/research/wiki/SSL-and-TLS-Deployment-Best-Practices)
+- [SSL Best Practices: a Quick and Dirty](https://www.ssl.com/guide/ssl-best-practices-a-quick-and-dirty-guide/)
 
 
 License
