@@ -8,7 +8,7 @@ certificate_packages:
 # directories
 certificate_group: "wheel"
 certificate_dir_private_group: "wheel"
-certificate_dir_private_mode: "0755"
+certificate_dir_private_mode: "0700"
 certificate_link_crt: "no"
 certificate_acme_link_crt: "no"
 

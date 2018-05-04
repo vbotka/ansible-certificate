@@ -8,7 +8,7 @@ certificate_packages:
 # directories
 certificate_group: "root"
 certificate_dir_private_group: "root"
-certificate_dir_private_mode: "0710"
+certificate_dir_private_mode: "0700"
 certificate_link_crt: "yes"
 certificate_acme_link_crt: "no"
 
