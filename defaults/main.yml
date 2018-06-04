@@ -1,7 +1,7 @@
 ---
 # certificate defaults
 
-certificate_debug: "no"
+certificate_debug: "False"
 
 # FreeBSD
 # freebsd_install_method: "packages"
