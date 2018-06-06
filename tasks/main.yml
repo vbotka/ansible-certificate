@@ -36,6 +36,9 @@
   debug:
     msg: "{{ msg.split('\n') }}"
   when: certificate_debug
+  tags:
+    - certificate_debug
+    - certificate_all
 
 - import_tasks: packages.yml
   tags:
