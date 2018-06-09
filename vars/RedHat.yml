@@ -9,8 +9,8 @@ certificate_packages:
 certificate_group: "root"
 certificate_dir_private_group: "root"
 certificate_dir_private_mode: "0700"
-certificate_link_crt: "yes"
-certificate_acme_link_crt: "no"
+certificate_link_crt: True
+certificate_acme_link_crt: False
 
 # EOF
 ...

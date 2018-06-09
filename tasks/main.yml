@@ -2,9 +2,7 @@
 
 - name: Add {{ ansible_os_family }} specific variables
   include_vars: "{{ ansible_os_family }}.yml"
-  tags:
-    - certificate_vars
-    - certificate_all
+  tags: certificate_vars
 
 - name: Debug
   vars:
@@ -36,29 +34,19 @@
   debug:
     msg: "{{ msg.split('\n') }}"
   when: certificate_debug
-  tags:
-    - certificate_debug
-    - certificate_all
+  tags: certificate_debug
 
 - import_tasks: packages.yml
-  tags:
-    - certificate_packages
-    - certificate_all
+  tags: certificate_packages
 
 - import_tasks: cert-dirs.yml
-  tags:
-    - certificate_dirs
-    - certificate_all
+  tags: certificate_dirs
 
 - import_tasks: cert-self-signed.yml
-  tags:
-    - certificate_self_signed
-    - certificate_all
+  tags: certificate_self_signed
 
 - import_tasks: cert-acme.yml
-  tags:
-    - certificate_acme
-    - certificate_all
+  tags: certificate_acme
 
 # EOF
 ...

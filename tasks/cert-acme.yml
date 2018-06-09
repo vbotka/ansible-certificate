@@ -1,12 +1,12 @@
 ---
 
-- name: Generate a Lets Encrypt Certificate
-  openssl_certificate: >
-    path="{{ certificate_acme_dir_certs }}/{{ item.crt }}"
-    csr_path="{{ certificate_dir_csr }}/{{ item.csr }}"
-    provider="acme"
-    acme_accountkey="{{ certificate_acme_dir_private }}/{{ item.private }}"
-    acme_challenge_path="{{ certificate_acme_dir_challenges }}//{{ item.challenge }}"
+- name: "cert-acme: Generate a Lets Encrypt Certificate"
+  openssl_certificate:
+    path: "{{ certificate_acme_dir_certs }}/{{ item.crt }}"
+    csr_path: "{{ certificate_dir_csr }}/{{ item.csr }}"
+    provider: "acme"
+    acme_accountkey: "{{ certificate_acme_dir_private }}/{{ item.private }}"
+    acme_challenge_path: "{{ certificate_acme_dir_challenges }}//{{ item.challenge }}"
   with_items: "{{ certificate_acme }}"
   when: not ansible_check_mode
 
