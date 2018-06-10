@@ -3,9 +3,7 @@ certificate
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-certificate.svg?branch=master)](https://travis-ci.org/vbotka/ansible-certificate)
 
-[Ansible role](https://galaxy.ansible.com/vbotka/certificate/).
-- Generate and/or check OpenSSL certificates
-
+[Ansible role](https://galaxy.ansible.com/vbotka/certificate/). Generate and check OpenSSL certificates.
 
 
 Requirements
@@ -17,13 +15,14 @@ None.
 Role Variables
 --------------
 
-TBD (Check defaults).
+TBD (Check defaults and examples in vars).
 
 
 Dependencies
 ------------
 
 None.
+
 
 References
 ----------
