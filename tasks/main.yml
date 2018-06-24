@@ -1,41 +1,10 @@
 ---
+# certificate tasks
 
-- name: Add {{ ansible_os_family }} specific variables
-  include_vars: "{{ ansible_os_family }}.yml"
+- import_tasks: vars.yml
   tags: certificate_vars
 
-- name: "Certificate: Debug"
-  vars:
-    msg: |
-      ansible_os_family [ {{ ansible_os_family }} ]
-      ansible_distribution [ {{ ansible_distribution }} ]
-      ansible_distribution_major_version [ {{ ansible_distribution_major_version }} ]
-      certificate_owner [ {{ certificate_owner }} ]
-      certificate_group [ {{ certificate_group }} ]
-      certificate_dir [ {{ certificate_dir }} ]
-      certificate_dir_csr [ {{ certificate_dir_csr }} ]
-      certificate_dir_certs [ {{ certificate_dir_certs }} ]
-      certificate_dir_mode [ {{ certificate_dir_mode }} ]
-      certificate_dir_private [ {{ certificate_dir_private }} ]
-      certificate_dir_private_group [ {{ certificate_dir_private_group }} ]
-      certificate_dir_private_mode [ {{ certificate_dir_private_mode }} ]
-      certificate_acme_owner [ {{ certificate_acme_owner }} ]
-      certificate_acme_dir [ {{ certificate_acme_dir }} ]
-      certificate_acme_dir_csr [ {{ certificate_acme_dir_csr }} ]
-      certificate_acme_dir_certs [ {{ certificate_acme_dir_certs }} ]
-      certificate_acme_dir_private [ {{ certificate_acme_dir_private }} ]
-      certificate_acme_dir_challenges [ {{ certificate_acme_dir_challenges }} ]
-      certificate_acme_dir_mode [ {{ certificate_acme_dir_mode }} ]
-      certificate_link_crt [ {{ certificate_link_crt }} ]
-      certificate_acme_link_crt [ {{ certificate_acme_link_crt }} ]
-      certificate_packages [
-      {{ certificate_packages|to_nice_yaml }} ]
-      certificate_self_signed [
-      {{ certificate_self_signed|to_nice_yaml }} ]
-      certificate_acme [
-      {{ certificate_acme|to_nice_yaml }} ]
-  debug:
-    msg: "{{ msg.split('\n') }}"
+- import_tasks: debug.yml
   when: certificate_debug
   tags: certificate_debug
 
