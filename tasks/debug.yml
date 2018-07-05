@@ -6,6 +6,9 @@
       ansible_os_family [ {{ ansible_os_family }} ]
       ansible_distribution [ {{ ansible_distribution }} ]
       ansible_distribution_major_version [ {{ ansible_distribution_major_version }} ]
+      ansible_distribution_version [ {{ ansible_distribution_version }} ]
+      ansible_distribution_release [ {{ ansible_distribution_release }} ]
+
       certificate_owner [ {{ certificate_owner }} ]
       certificate_group [ {{ certificate_group }} ]
       certificate_dir [ {{ certificate_dir }} ]
@@ -24,12 +27,12 @@
       certificate_acme_dir_mode [ {{ certificate_acme_dir_mode }} ]
       certificate_link_crt [ {{ certificate_link_crt }} ]
       certificate_acme_link_crt [ {{ certificate_acme_link_crt }} ]
-      certificate_packages [
-      {{ certificate_packages|to_nice_yaml }} ]
-      certificate_self_signed [
-      {{ certificate_self_signed|to_nice_yaml }} ]
-      certificate_acme [
-      {{ certificate_acme|to_nice_yaml }} ]
+      certificate_packages
+      {{ certificate_packages|to_nice_yaml }}
+      certificate_self_signed
+      {{ certificate_self_signed|to_nice_yaml }}
+      certificate_acme
+      {{ certificate_acme|to_nice_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
 
