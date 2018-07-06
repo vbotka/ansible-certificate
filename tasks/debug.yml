@@ -29,6 +29,8 @@
       certificate_acme_link_crt [ {{ certificate_acme_link_crt }} ]
       certificate_packages
       {{ certificate_packages|to_nice_yaml }}
+      certificate_self_signed_command
+      {{ certificate_self_signed_command|to_nice_yaml }}
       certificate_self_signed
       {{ certificate_self_signed|to_nice_yaml }}
       certificate_acme

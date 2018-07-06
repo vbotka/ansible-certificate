@@ -2,7 +2,7 @@
 # certificate tasks
 
 - import_tasks: vars.yml
-  tags: certificate_vars
+  tags: [certificate_vars, always]
 
 - import_tasks: debug.yml
   when: certificate_debug
@@ -13,6 +13,9 @@
 
 - import_tasks: cert-dirs.yml
   tags: certificate_dirs
+
+- import_tasks: cert-command.yml
+  tags: certificate_command
 
 - import_tasks: cert-self-signed.yml
   tags: certificate_self_signed

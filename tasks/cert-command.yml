@@ -1,0 +1,17 @@
+---
+
+- name: "cert-command: Generate a Self Signed OpenSSL certificate"
+  command: openssl req -nodes -x509 -subj "{{ item.subject }}" -days "{{ item.days }}" -newkey "{{ item.cypher }}" -keyout "{{ certificate_dir_private }}/{{ item.private }}" -out "{{ certificate_dir_certs }}/{{ item.crt }}"
+  args:
+    creates: "{{ certificate_dir_certs }}/{{ item.crt }}"
+  loop: "{{ certificate_self_signed_command }}"
+  when: not ansible_check_mode
+
+- name: "cert-command: Set permisions of private keys"
+  file:
+    path: "{{ certificate_dir_private }}/{{ item.private }}"
+    mode: "0600"
+  loop: "{{ certificate_self_signed_command }}"
+
+# EOF
+...

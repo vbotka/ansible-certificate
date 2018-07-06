@@ -6,6 +6,13 @@
 #      private: "example_com.pem",
 #      csr: "example_com.csr",
 #      crt: "example_com.crt" }
+
+#certificate_self_signed_command:
+#  - { subject: "/C=CZ/ST=Czech/L=Prague/O=IT/CN=example.com",
+#      private: "example.com.key",
+#      crt: "example.com.crt",
+#      days: "3650",
+#      cypher: "rsa:2048" }
        
 # passphrase and cipher are optional and are required together
 #certificate_self_signed:

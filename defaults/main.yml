@@ -25,11 +25,14 @@ certificate_acme_dir_challenges: "{{ certificate_dir }}/challenges"
 certificate_acme_owner: "root"
 certificate_acme_dir_mode: "0755"
 
-# self-signed certs
-certificate_self_signed: {}
+# self-signed certs by openssl command
+certificate_self_signed_command: []
 
-# Lets Encrypt certs
-certificate_acme: {}
+# self-signed certs by openssl_certificate module
+certificate_self_signed: []
+
+# Lets Encrypt certs by openssl_certificate module
+certificate_acme: []
 
 # EOF
 ...
