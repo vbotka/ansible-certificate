@@ -1,6 +1,6 @@
 ---
 
-- name: "vars for {{ ansible_os_family }} {{ ansible_distribution }} {{ ansible_distribution_release }}"
+- name: "vars: vars for {{ ansible_os_family }} {{ ansible_distribution }} {{ ansible_distribution_release }}"
   include_vars: "{{ item }}"
   with_first_found:
     - files:

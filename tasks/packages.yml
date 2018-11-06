@@ -1,28 +1,24 @@
 ---
 
 # FreeBSD
-- name: Install packages FreeBSD
+- name: "packages: Install packages FreeBSD"
   pkgng:
-    name: "{{ item }}"
-  with_items: "{{ certificate_packages }}"
+    name: "{{ certificate_packages }}"
   when:
     - ansible_os_family == "FreeBSD"
     - freebsd_install_method|lower == "packages"
 
-- name: Install ports FreeBSD
+- name: "packages: Install ports FreeBSD"
   portinstall:
-    name: "{{ item }}"
-    use_packages: "{{ freebsd_use_packages }}"
-  with_items: "{{ certificate_packages }}"
+    name: "{{ certificate_packages }}"
   when:
     - ansible_os_family == "FreeBSD"
     - freebsd_install_method|lower == "ports"
 
 # Linux
-- name: Install packages Linux
+- name: "packages: Install packages Linux"
   package:
-    name: "{{ item }}"
-  with_items: "{{ certificate_packages }}"
+    name: "{{ certificate_packages }}"
   when: (ansible_os_family == "Debian") or
         (ansible_os_family == "RedHat")
 

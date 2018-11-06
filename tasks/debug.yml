@@ -1,6 +1,6 @@
 ---
 
-- name: "Certificate: Debug"
+- name: "Certificate Debug"
   vars:
     msg: |
       ansible_os_family [ {{ ansible_os_family }} ]

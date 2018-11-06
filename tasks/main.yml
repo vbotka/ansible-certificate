@@ -6,7 +6,7 @@
 
 - import_tasks: debug.yml
   when: certificate_debug
-  tags: certificate_debug
+  tags: [certificate_debug, always]
 
 - import_tasks: packages.yml
   tags: certificate_packages
