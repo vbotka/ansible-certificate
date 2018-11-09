@@ -10,7 +10,8 @@
 
 - name: "packages: Install ports FreeBSD"
   portinstall:
-    name: "{{ certificate_packages }}"
+    name: "{{ item }}"
+  loop: "{{ certificate_packages }}"
   when:
     - ansible_os_family == "FreeBSD"
     - freebsd_install_method|lower == "ports"
