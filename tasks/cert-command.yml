@@ -1,7 +1,13 @@
 ---
 
 - name: "cert-command: Generate a Self Signed OpenSSL certificate"
-  command: openssl req -nodes -x509 -subj "{{ item.subject }}" -days "{{ item.days }}" -newkey "{{ item.cypher }}" -keyout "{{ certificate_dir_private }}/{{ item.private }}" -out "{{ certificate_dir_certs }}/{{ item.crt }}"
+  command: >
+    openssl req -nodes -x509
+    -subj "{{ item.subject }}"
+    -days "{{ item.days }}"
+    -newkey "{{ item.cypher }}"
+    -keyout "{{ certificate_dir_private }}/{{ item.private }}"
+    -out "{{ certificate_dir_certs }}/{{ item.crt }}"
   args:
     creates: "{{ certificate_dir_certs }}/{{ item.crt }}"
   loop: "{{ certificate_self_signed_command }}"

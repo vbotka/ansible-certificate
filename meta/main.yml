@@ -1,14 +1,14 @@
+---
 galaxy_info:
   author: Vladimir Botka
-  description: Generate OpenSSL certificates.
+  description: Generate SSL certificates.
   company: https://botka.link
   github_branch: master
   license: BSD
-  min_ansible_version: 2.5
+  min_ansible_version: 2.7
   platforms:
     - name: FreeBSD
       versions:
-        - 10.4
         - 11.2
     - name: Ubuntu
       versions:
@@ -22,4 +22,5 @@ galaxy_info:
     - centos
     - letsencrypt
     - certificate
+    - ssl
 dependencies: []

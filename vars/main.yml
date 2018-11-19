@@ -1,21 +1,21 @@
 ---
 # certificate vars
 
-#certificate_self_signed:
+# certificate_self_signed:
 #  - { CN: "example.com",
 #      private: "example_com.pem",
 #      csr: "example_com.csr",
 #      crt: "example_com.crt" }
 
-#certificate_self_signed_command:
+# certificate_self_signed_command:
 #  - { subject: "/C=CZ/ST=Czech/L=Prague/O=IT/CN=example.com",
 #      private: "example.com.key",
 #      crt: "example.com.crt",
 #      days: "3650",
 #      cypher: "rsa:2048" }
-       
+
 # passphrase and cipher are optional and are required together
-#certificate_self_signed:
+# certificate_self_signed:
 #  - { CN: "example.com",
 #      private: "example_com.pem",
 #      csr: "example_com.csr",
@@ -24,7 +24,7 @@
 #      cipher: "AES-256-CBC" }
 
 # [TODO] not tested yet
-#certificate_acme:
+# certificate_acme:
 #  - { CN: "example.com",
 #      private: "example_com.pem",
 #      csr: "example_com.csr",

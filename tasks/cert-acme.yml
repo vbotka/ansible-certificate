@@ -6,7 +6,7 @@
     path: "{{ certificate_acme_dir_certs }}/{{ item.crt }}"
     csr_path: "{{ certificate_dir_csr }}/{{ item.csr }}"
     acme_accountkey: "{{ certificate_acme_dir_private }}/{{ item.private }}"
-    acme_challenge_path: "{{ certificate_acme_dir_challenges }}//{{ item.challenge }}"
+    acme_challenge_path: "{{ certificate_acme_dir_challenges }}/{{ item.challenge }}"
   loop: "{{ certificate_acme }}"
   when: not ansible_check_mode
 
