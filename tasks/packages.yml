@@ -4,6 +4,10 @@
 - name: "packages: Install packages FreeBSD"
   pkgng:
     name: "{{ certificate_packages }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   when:
     - ansible_os_family == "FreeBSD"
     - freebsd_install_method|lower == "packages"
@@ -11,6 +15,10 @@
 - name: "packages: Install ports FreeBSD"
   portinstall:
     name: "{{ item }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
   loop: "{{ certificate_packages }}"
   when:
     - ansible_os_family == "FreeBSD"
@@ -20,6 +28,10 @@
 - name: "packages: Install packages Linux"
   package:
     name: "{{ certificate_packages }}"
+  register: result
+  retries: "{{ linux_install_retries }}"
+  until: result is succeeded
+  delay: "{{ linux_install_delay }}"
   when: (ansible_os_family == "Debian") or
         (ansible_os_family == "RedHat")
 
