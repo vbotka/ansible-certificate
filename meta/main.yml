@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: certificate
   author: Vladimir Botka
   description: Generate SSL certificates.
   company: https://botka.link
