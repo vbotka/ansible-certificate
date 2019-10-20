@@ -1,7 +1,7 @@
 ---
 
 - name: >
-    vars: Variables for
+    vars: Default OS specific variables for
     {{ ansible_os_family }},
     {{ ansible_distribution }}
     {{ ansible_distribution_release }}
@@ -11,6 +11,22 @@
         - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
         - "{{ ansible_distribution }}.yml"
         - "{{ ansible_os_family }}.yml"
+        - "defaults.yml"
+        - "default.yml"
+      paths: "{{ role_path }}/vars/defaults"
+
+- name: >
+    vars: Custom OS specific variables for
+    {{ ansible_os_family }},
+    {{ ansible_distribution }}
+    {{ ansible_distribution_release }}
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+        - "defaults.yml"
         - "default.yml"
       paths: "{{ role_path }}/vars"
 

@@ -5,10 +5,11 @@
   tags: [certificate_vars, always]
 
 - import_tasks: debug.yml
-  when: certificate_debug
+  when: certificate_debug|bool
   tags: [certificate_debug, always]
 
 - import_tasks: packages.yml
+  when: certificate_install|bool
   tags: certificate_packages
 
 - import_tasks: cert-dirs.yml

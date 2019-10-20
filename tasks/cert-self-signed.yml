@@ -19,7 +19,7 @@
 
 - name: "cert-self-signed: Generate a Self Signed OpenSSL certificate"
   openssl_certificate:
-    provider: selfsigned
+    provider: "selfsigned"
     path: "{{ certificate_dir_certs }}/{{ item.crt }}"
     csr_path: "{{ certificate_dir_csr }}/{{ item.csr }}"
     privatekey_path: "{{ certificate_dir_private }}/{{ item.private }}"
