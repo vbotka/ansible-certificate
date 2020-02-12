@@ -4,6 +4,10 @@
 certificate_install: true
 certificate_debug: false
 
+# sanity
+certificate_sanity_platform: true
+certificate_sanity_ansible_version: true
+
 # FreeBSD
 # freebsd_install_method: "packages"
 freebsd_install_method: "ports"
@@ -40,6 +44,22 @@ certificate_self_signed: []
 
 # Lets Encrypt certs by openssl_certificate module
 certificate_acme: []
+
+# Ansible Library. Variables for included tasks.
+al_debug: True
+
+# Ansible Library. Variables for al_sanity_platform
+al_sanity_platform_gather_subset: true
+al_sanity_platform_fail: true
+al_sanity_platform_version_fail: true
+al_sanity_platform_end_host: false
+al_sanity_platform_version_end_host: false
+al_sanity_platform_warning: true
+
+# Ansible Library. Variables for al_sanity_ansible_version
+al_sanity_ansible_version_fail: true
+al_sanity_ansible_version_end_host: false
+al_sanity_ansible_version_warning: true
 
 # EOF
 ...

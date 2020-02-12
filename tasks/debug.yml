@@ -9,6 +9,9 @@
       ansible_distribution_version [{{ ansible_distribution_version }}]
       ansible_distribution_release [{{ ansible_distribution_release }}]
 
+      certificate_sanity_platform [{{ certificate_sanity_platform }}]
+      certificate_sanity_ansible_version [{{ certificate_sanity_ansible_version }}]
+
       certificate_owner [{{ certificate_owner }}]
       certificate_group [{{ certificate_group }}]
       certificate_dir [{{ certificate_dir }}]

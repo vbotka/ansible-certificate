@@ -1,6 +1,9 @@
 ---
 # certificate tasks
 
+- import_tasks: sanity.yml
+  tags: certificate_sanity
+
 - import_tasks: vars.yml
   tags: [certificate_vars, always]
 
