@@ -2,8 +2,8 @@
 # certificate vars for Debian
 
 certificate_packages:
-  - python-openssl
-  - acme-tiny
+  - "python-openssl"
+  - "acme-tiny"
 
 # directories
 certificate_group: "root"
@@ -11,6 +11,13 @@ certificate_dir_private_group: "ssl-cert"
 certificate_dir_private_mode: "0710"
 certificate_link_crt: true
 certificate_acme_link_crt: false
+
+# packages
+al_sanity_packages_required:
+  Ubuntu:
+    default:
+      - ["python-openssl", "python-cryptography"]
+      - ["acme-tiny"]
 
 # EOF
 ...

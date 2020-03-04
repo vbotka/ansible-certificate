@@ -8,9 +8,11 @@
       ansible_distribution_major_version [{{ ansible_distribution_major_version }}]
       ansible_distribution_version [{{ ansible_distribution_version }}]
       ansible_distribution_release [{{ ansible_distribution_release }}]
+      ansible_python_version [{{ ansible_python_version }}]
 
       certificate_sanity_platform [{{ certificate_sanity_platform }}]
       certificate_sanity_ansible_version [{{ certificate_sanity_ansible_version }}]
+      certificate_sanity_packages [{{ certificate_sanity_packages }}]
 
       certificate_owner [{{ certificate_owner }}]
       certificate_group [{{ certificate_group }}]
@@ -41,6 +43,10 @@
       {{ certificate_self_signed|to_nice_yaml }}
       certificate_acme
       {{ certificate_acme|to_nice_yaml }}
+
+      al_debug [{{ al_debug }}]
+      al_sanity_packages_required
+      {{ al_sanity_packages_required|to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
 

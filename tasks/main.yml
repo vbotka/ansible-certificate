@@ -1,9 +1,6 @@
 ---
 # certificate tasks
 
-- import_tasks: sanity.yml
-  tags: certificate_sanity
-
 - import_tasks: vars.yml
   tags: [certificate_vars, always]
 
@@ -14,6 +11,10 @@
 - import_tasks: packages.yml
   when: certificate_install|bool
   tags: certificate_packages
+
+- import_tasks: sanity.yml
+  when: certificate_sanity|bool
+  tags: certificate_sanity
 
 - import_tasks: cert-dirs.yml
   tags: certificate_dirs

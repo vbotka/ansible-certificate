@@ -24,5 +24,11 @@
     tasks_from: al_sanity_ansible_version
   when: certificate_sanity_ansible_version|bool
 
+- name: "sanity: Include vbotka.ansible_lib al_sanity_packages."
+  include_role:
+    name: vbotka.ansible_lib
+    tasks_from: al_sanity_packages
+  when: certificate_sanity_packages|bool
+
 # EOF
 ...

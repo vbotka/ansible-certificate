@@ -1,9 +1,12 @@
 ---
 # certificate vars for FreeBSD
+certificate_python_version: "{{ ansible_python_version.split('.')[0:2]|join() }}"
 
 certificate_packages:
-  - security/py-openssl
-  - security/py-acme-tiny
+  - "security/py-cryptography"
+  - "security/py-openssl"
+  - "security/py-acme-tiny"
+  - "security/py-acme"
 
 # directories
 certificate_group: "wheel"
@@ -11,6 +14,15 @@ certificate_dir_private_group: "wheel"
 certificate_dir_private_mode: "0700"
 certificate_link_crt: false
 certificate_acme_link_crt: false
+
+# packages
+al_sanity_packages_required:
+  FreeBSD:
+    default:
+      - - "py{{ certificate_python_version }}-cryptography"
+        - "py{{ certificate_python_version }}-openssl"
+      - - "py{{ certificate_python_version }}-acme"
+      - - "acme-tiny"
 
 # EOF
 ...
