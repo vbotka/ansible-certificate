@@ -1,0 +1,51 @@
+---
+
+- name: "cert-openssl-csr: Generate OpenSSL Certificate Signing Request"
+  openssl_csr:
+    attributes: "{{ item.attributes|default(omit) }}"
+    authority_cert_issuer: "{{ item.issuer|default(omit) }}"
+    authority_cert_serial_number: "{{ item.serial_number|default(omit) }}"
+    authority_key_identifier: "{{ item.key_identifier|default(omit) }}"
+    backup: "{{ item.backup|default(certificate_backup_conf) }}"
+    basic_constraints: "{{ item.basic_constraints|default(omit) }}"
+    basic_constraints_critical: "{{ item.basic_constraints_critical|default(omit) }}"
+    common_name: "{{ item.CN }}"
+    country_name: "{{ item.country_name|default(omit) }}"
+    create_subject_key_identifier: "{{ item.create_subject_key_identifier|default(omit) }}"
+    digest: "{{ item.digest|default(omit) }}"
+    email_address: "{{ item.email_address|default(omit) }}"
+    extended_key_usage: "{{ item.extended_key_usage|default(omit) }}"
+    extended_key_usage_critical: "{{ item.extended_key_usage_critical|default(omit) }}"
+    force: "{{ item.force|default(omit) }}"
+    group: "{{ item.group|default(certificate_group) }}"
+    key_usage: "{{ item.key_usage|default(omit) }}"
+    key_usage_critical: "{{ item.key_usage_critical|default(omit) }}"
+    locality_name: "{{ item.locality_name|default(omit) }}"
+    mode: "{{ item.mode|default(certificate_file_mode) }}"
+    ocsp_must_staple: "{{ item.ocsp_must_staple|default(omit) }}"
+    ocsp_must_staple_critical: "{{ item.ocsp_must_staple_critical|default(omit) }}"
+    organization_name: "{{ item.organization_name|default(omit) }}"
+    organizational_unit_name: "{{ item.organizational_unit_name|default(omit) }}"
+    owner: "{{ item.owner|default(certificate_owner) }}"
+    path: "{{ certificate_dir_csr }}/{{ item.csr }}"
+    privatekey_passphrase: "{{ item.passphrase |default(omit) }}"
+    privatekey_path: "{{ certificate_private_dir }}/{{ item.private }}"
+    select_crypto_backend: "{{ item.backend|default(certificate_default_backend) }}"
+    selevel: "{{ item.selevel|default(omit) }}"
+    serole: "{{ item.serole|default(omit) }}"
+    setype: "{{ item.setype|default(omit) }}"
+    seuser: "{{ item.seuser|default(omit) }}"
+    state: "{{ item.state|default(omit) }}"  # default: present
+    state_or_province_name: "{{ item.state_or_province_name|default(omit) }}"
+    subject: "{{ item.subject|default(omit) }}"
+    subject_alt_name: "{{ item.subject_alt_name|default(omit) }}"
+    subject_alt_name_critical: "{{ item.subject_alt_name_critical|default(omit) }}"
+    subject_key_identifier: "{{ item.subject_key_identifier|default(omit) }}"
+    unsafe_writes: "{{ item.unsafe_writes|default(omit) }}"  # default: false
+    use_common_name_for_san: "{{ item.use_common_name_for_san|default(omit) }}"  # default: true
+    version: "{{ item.version|default(omit) }}"  # The only allowed value according to RFC 2986 is 1
+  loop: "{{ certificate_data }}"
+  when: not ansible_check_mode
+
+# EOF
+...

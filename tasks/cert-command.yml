@@ -16,7 +16,9 @@
 - name: "cert-command: Set permisions of private keys"
   file:
     path: "{{ certificate_dir_private }}/{{ item.private }}"
-    mode: "0600"
+    owner: "{{ certificate_dir_private_owner }}"
+    group: "{{ certificate_dir_private_group }}"
+    mode: "{{ certificate_file_private_mode }}"
   loop: "{{ certificate_self_signed_command }}"
 
 # EOF

@@ -1,6 +1,6 @@
 ---
 
-- name: "Certificate Debug"
+- name: "Debug"
   vars:
     msg: |
       ansible_os_family [{{ ansible_os_family }}]
@@ -10,39 +10,51 @@
       ansible_distribution_release [{{ ansible_distribution_release }}]
       ansible_python_version [{{ ansible_python_version }}]
 
+      certificate_sanity [{{ certificate_sanity }}]
       certificate_sanity_platform [{{ certificate_sanity_platform }}]
       certificate_sanity_ansible_version [{{ certificate_sanity_ansible_version }}]
       certificate_sanity_packages [{{ certificate_sanity_packages }}]
 
+      certificate_backup_conf [{{ certificate_backup_conf }}]
+
+      certificate_default_backend [{{ certificate_default_backend }}]
+      certificate_default_size [{{ certificate_default_size }}]
+      certificate_default_type [{{ certificate_default_type }}]
+      certificate_default_provider [{{ certificate_default_provider }}]
+
       certificate_owner [{{ certificate_owner }}]
       certificate_group [{{ certificate_group }}]
+      certificate_dir_mode [{{ certificate_dir_mode }}]
+      certificate_file_mode [{{ certificate_file_mode }}]
       certificate_dir [{{ certificate_dir }}]
       certificate_dir_csr [{{ certificate_dir_csr }}]
       certificate_dir_certs [{{ certificate_dir_certs }}]
-      certificate_dir_mode [{{ certificate_dir_mode }}]
-      certificate_dir_private [{{ certificate_dir_private }}]
-      certificate_dir_private_group [{{ certificate_dir_private_group }}]
-      certificate_dir_private_mode [{{ certificate_dir_private_mode }}]
+
+      certificate_private_owner [{{ certificate_private_owner }}]
+      certificate_private_group [{{ certificate_private_group }}]
+      certificate_private_dir_mode [{{ certificate_private_dir_mode }}]
+      certificate_private_file_mode [{{ certificate_private_file_mode }}]
+      certificate_private_dir [{{ certificate_private_dir }}]
 
       certificate_acme_owner [{{ certificate_acme_owner }}]
+      certificate_acme_group [{{ certificate_acme_group }}]
+      certificate_acme_dir_mode [{{ certificate_acme_dir_mode }}]
+      certificate_acme_base_dir [{{ certificate_acme_base_dir }}]
       certificate_acme_dir [{{ certificate_acme_dir }}]
       certificate_acme_dir_csr [{{ certificate_acme_dir_csr }}]
       certificate_acme_dir_certs [{{ certificate_acme_dir_certs }}]
       certificate_acme_dir_private [{{ certificate_acme_dir_private }}]
       certificate_acme_dir_challenges [{{ certificate_acme_dir_challenges }}]
-      certificate_acme_dir_mode [{{ certificate_acme_dir_mode }}]
-      certificate_link_crt [{{ certificate_link_crt }}]
       certificate_acme_link_crt [{{ certificate_acme_link_crt }}]
+      certificate_link_crt [{{ certificate_link_crt }}]
 
       certificate_install [{{ certificate_install }}]
       certificate_packages
       {{ certificate_packages|to_nice_yaml }}
       certificate_self_signed_command
       {{ certificate_self_signed_command|to_nice_yaml }}
-      certificate_self_signed
-      {{ certificate_self_signed|to_nice_yaml }}
-      certificate_acme
-      {{ certificate_acme|to_nice_yaml }}
+      certificate_data
+      {{ certificate_data|to_nice_yaml }}
 
       al_debug [{{ al_debug }}]
       al_sanity_packages_required

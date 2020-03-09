@@ -2,7 +2,7 @@
 
 - name: "cert-dirs: Create {{ certificate_dir }}"
   file:
-    state: "directory"
+    state: directory
     path: "{{ certificate_dir }}"
     owner: "{{ certificate_owner }}"
     group: "{{ certificate_group }}"
@@ -10,18 +10,18 @@
 
 - name: "cert-dirs: Create dirs csr and certs in {{ certificate_dir }}"
   file:
-    state: "directory"
+    state: directory
     path: "{{ certificate_dir }}/{{ item }}"
     owner: "{{ certificate_owner }}"
     group: "{{ certificate_group }}"
     mode: "{{ certificate_dir_mode }}"
   loop:
-    - "csr"
-    - "certs"
+    - csr
+    - certs
 
 - name: "cert-dirs: Link certs to crt in {{ certificate_dir }}"
   file:
-    state: "link"
+    state: link
     src: "{{ certificate_dir }}/certs"
     dest: "{{ certificate_dir }}/crt"
     owner: "{{ certificate_owner }}"
@@ -30,11 +30,11 @@
 
 - name: "cert-dirs: Create {{ certificate_dir }}/private"
   file:
-    state: "directory"
-    path: "{{ certificate_dir }}/private"
-    owner: "{{ certificate_owner }}"
-    group: "{{ certificate_dir_private_group }}"
-    mode: "{{ certificate_dir_private_mode }}"
+    state: directory
+    path: "{{ certificate_private_dir }}"
+    owner: "{{ certificate_private_owner }}"
+    group: "{{ certificate_private_group }}"
+    mode: "{{ certificate_private_dir_mode }}"
 
 # EOF
 ...

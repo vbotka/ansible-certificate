@@ -3,6 +3,7 @@
 
 certificate_install: true
 certificate_debug: false
+certificate_backup_conf: false
 
 # sanity
 certificate_sanity: true
@@ -11,8 +12,8 @@ certificate_sanity_ansible_version: true
 certificate_sanity_packages: true
 
 # FreeBSD
-freebsd_install_method: "packages"
-# freebsd_install_method: "ports"
+freebsd_install_method: packages
+# freebsd_install_method: ports
 freebsd_use_packages: true
 freebsd_install_retries: 10
 freebsd_install_delay: 5
@@ -22,30 +23,38 @@ linux_install_retries: 10
 linux_install_delay: 5
 
 # ssl directories
-certificate_dir: "/etc/ssl"
+certificate_dir: /etc/ssl
 certificate_dir_csr: "{{ certificate_dir }}/csr"
 certificate_dir_certs: "{{ certificate_dir }}/certs"
-certificate_dir_private: "{{ certificate_dir }}/private"
-certificate_owner: "root"
+certificate_owner: root
 certificate_dir_mode: "0755"
+certificate_file_mode: "0644"
+
+# ssl private
+certificate_private_dir: "{{ certificate_dir }}/private"
+certificate_private_owner: root
+
+# certificate default parameters
+certificate_default_backend: auto
+certificate_default_size: 4096
+certificate_default_type: RSA
+certificate_default_provider: selfsigned
 
 # acme directories
-certificate_acme_dir: "/etc/letsencrypt"
-certificate_acme_dir_csr: "{{ certificate_dir }}/csr"
-certificate_acme_dir_certs: "{{ certificate_dir }}/archive"
-certificate_acme_dir_private: "{{ certificate_dir }}/keys"
-certificate_acme_dir_challenges: "{{ certificate_dir }}/challenges"
-certificate_acme_owner: "root"
+certificate_acme_dir: "{{certificate_acme_base_dir}}/etc/letsencrypt"
+certificate_acme_dir_csr: "{{ certificate_acme_dir }}/csr"
+certificate_acme_dir_certs: "{{ certificate_acme_dir }}/archive"
+certificate_acme_dir_private: "{{ certificate_acme_dir }}/keys"
+certificate_acme_dir_challenges: "{{ certificate_acme_dir }}/challenges"
+certificate_acme_owner: root
+certificate_acme_group: wheel
 certificate_acme_dir_mode: "0755"
 
 # self-signed certs by openssl command
 certificate_self_signed_command: []
 
-# self-signed certs by openssl_certificate module
-certificate_self_signed: []
-
-# Lets Encrypt certs by openssl_certificate module
-certificate_acme: []
+# certs by openssl_certificate module
+certificate_data: []
 
 # Ansible Library. Variables for included tasks.
 al_debug: false

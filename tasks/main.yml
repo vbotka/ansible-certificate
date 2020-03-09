@@ -22,11 +22,14 @@
 - import_tasks: cert-command.yml
   tags: certificate_command
 
-- import_tasks: cert-self-signed.yml
-  tags: certificate_self_signed
+- import_tasks: cert-openssl-privatekey.yml
+  tags: certificate-openssl-privatekey
 
-- import_tasks: cert-acme.yml
-  tags: certificate_acme
+- import_tasks: cert-openssl-csr.yml
+  tags: certificate-openssl-csr
+
+- import_tasks: cert-openssl-certificate.yml
+  tags: certificate-openssl-certificate
 
 # EOF
 ...

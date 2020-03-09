@@ -2,20 +2,26 @@
 # certificate vars for RedHat
 
 certificate_packages:
-  - "pyOpenSSL"
-  - "acme-tiny"
+  - pyOpenSSL
+  - acme-tiny
 
-# directories
-certificate_group: "root"
-certificate_dir_private_group: "root"
-certificate_dir_private_mode: "0700"
+# ssl directories
+certificate_group: root
+
+# ssl private
+certificate_private_group: root
+certificate_private_dir_mode: "0700"
+certificate_private_file_mode: "0600"
+
+# acme directories
+certificate_acme_base_dir: ""
 certificate_link_crt: true
 certificate_acme_link_crt: false
 
 # packages
 al_sanity_packages_required:
   RedHat:
-    default: []
+    default: []  # TODO
 
 # EOF
 ...

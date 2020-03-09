@@ -1,0 +1,28 @@
+---
+
+- name: "cert-openssl-privatekey:: Generate OpenSSL private key (default RSA/{{ certificate_default_size }})"
+  openssl_privatekey:
+    attributes: "{{ item.attributes|default(omit) }}"
+    backup: "{{ item.backup|default(certificate_backup_conf) }}"
+    cipher: "{{ item.cipher | default(omit) }}"
+    curve: "{{ item.curve|default(omit) }}"
+    force: "{{ item.force|default(omit) }}"  # default: false
+    group: "{{ item.group|default(certificate_private_group) }}"
+    mode: "{{ item.mode|default(certificate_private_file_mode) }}"
+    owner: "{{ item.owner|default(certificate_private_owner) }}"
+    passphrase: "{{ item.passphrase | default(omit) }}"
+    path: "{{ certificate_private_dir }}/{{ item.private }}"
+    select_crypto_backend: "{{ item.backend|default(certificate_default_backend) }}"
+    selevel: "{{ item.selevel|default(omit) }}"
+    serole: "{{ item.serole|default(omit) }}"
+    setype: "{{ item.setype|default(omit) }}"
+    seuser: "{{ item.seuser|default(omit) }}"
+    size: "{{ item.size|default(certificate_default_size) }}"
+    state: "{{ item.state|default(omit) }}"  # default: present
+    type: "{{ item.type|default(certificate_default_type) }}"
+    unsafe_writes: "{{ item.unsafe_writes|default(omit) }}"  # default: false
+  loop: "{{ certificate_data }}"
+  when: not ansible_check_mode
+
+# EOF
+...
