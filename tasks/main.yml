@@ -4,6 +4,9 @@
 - import_tasks: vars.yml
   tags: [certificate_vars, always]
 
+- import_tasks: help.yml
+  tags: always
+
 - import_tasks: debug.yml
   when: certificate_debug|bool
   tags: [certificate_debug, always]
@@ -23,13 +26,28 @@
   tags: certificate_command
 
 - import_tasks: cert-openssl-privatekey.yml
-  tags: certificate-openssl-privatekey
+  tags:
+    - certificate_openssl_privatekey
+    - certificate_openssl
+
+- import_tasks: cert-openssl-privatekey-info.yml
+  tags: certificate_openssl_privatekey_info
 
 - import_tasks: cert-openssl-csr.yml
-  tags: certificate-openssl-csr
+  tags:
+    - certificate_openssl_csr
+    - certificate_openssl
+
+- import_tasks: cert-openssl-csr-info.yml
+  tags: certificate_openssl_csr_info
 
 - import_tasks: cert-openssl-certificate.yml
-  tags: certificate-openssl-certificate
+  tags:
+    - certificate_openssl_certificate
+    - certificate_openssl
+
+- import_tasks: cert-openssl-certificate-info.yml
+  tags: certificate_openssl_certificate_info
 
 # EOF
 ...

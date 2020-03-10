@@ -1,0 +1,15 @@
+---
+
+- name: 'Help'
+  block:
+    - name: 'Help'
+      debug:
+        msg: "{{ certificate_help_text.split('\n') }}"
+    - meta: end_play
+  vars:
+    my_tags: "{{ ansible_run_tags|difference(['all']) }}"
+  when: (my_tags|length == 0) or
+        (my_tags|intersect(certificate_known_tags)|length == 0)
+
+# EOF
+...

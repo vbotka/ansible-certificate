@@ -1,10 +1,88 @@
 ---
 # certificate defaults
 
+certificate_role_version: 1.4-CURRENT
 certificate_install: true
 certificate_debug: false
 certificate_debug_classified: false
 certificate_backup_conf: false
+
+# help
+certificate_help_text: |
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Ansible role vbotka.certificate {{ certificate_role_version }}
+  Manage SSL certificates
+
+  USAGE
+
+  Display this help
+  shell> ansible-playbook playbook.yml
+
+  Generate a Self Signed OpenSSL certificates by openssl command
+  shell> ansible-playbook playbook.yml -t certificate_command
+
+  Generate OpenSSL private keys by openssl_privatekey module
+  shell> ansible-playbook playbook.yml -t certificate_openssl_privatekey
+
+  Generate OpenSSL Certificate Signing Requests by openssl_csr module
+  shell> ansible-playbook playbook.yml -t certificate_openssl_csr
+
+  Generate OpenSSL certificatse by openssl_certificate module
+  shell> ansible-playbook playbook.yml -t certificate_openssl_certificate
+
+  Generate OpenSSL private keys, CSRs, and certificatses by openssl_* modules
+  (-t certificate_openssl_privatekey,certificate_openssl_csr,certificate_openssl_certificate)
+  shell> ansible-playbook playbook.yml -t certificate_openssl
+
+  Display information on OpenSSL private keys (when certificate_debug_classified=true)
+  shell> ansible-playbook playbook.yml -t certificate_openssl_privatekey_info
+
+  Display information on OpenSSL Certificate Signing Requests (when certificate_debug_classified=true)
+  shell> ansible-playbook playbook.yml -t certificate_openssl_csr_info
+
+  Display information on OpenSSL certificates (when certificate_debug_classified=true)
+  shell> ansible-playbook playbook.yml -t certificate_openssl_certificate_info
+
+  SETUP
+
+  Display debug info (when certificate_debug=true)
+  shell> ansible-playbook playbook.yml -t certificate_debug
+
+  Install packages (when certificate_install=true)
+  shell> ansible-playbook playbook.yml -t certificate_packages
+
+  Test the sanity (when certificate_sanity=true)
+  shell> ansible-playbook playbook.yml -t certificate_sanity
+
+  Create directories
+  shell> ansible-playbook playbook.yml -t certificate_dirs
+
+  NOTES
+
+  1) Example playbook.yml
+
+     sheel> cat playbook.yml
+     - hosts: srv.example.com
+       roles:
+         - vbotka.certificate
+
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  https://github.com/vbotka/ansible-certificate
+
+certificate_known_tags:
+  - certificate_command
+  - certificate_openssl
+  - certificate_openssl_privatekey
+  - certificate_openssl_privatekey_info
+  - certificate_openssl_csr
+  - certificate_openssl_csr_info
+  - certificate_openssl_certificate
+  - certificate_openssl_certificate_info
+  - certificate_vars
+  - certificate_debug
+  - certificate_packages
+  - certificate_sanity
+  - certificate_dirs
 
 # sanity
 certificate_sanity: true
