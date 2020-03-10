@@ -3,6 +3,7 @@
 
 certificate_python_version: "{{ ansible_python_version.split('.')[0:2]|join() }}"
 
+# packages install
 certificate_packages:
   - security/py-cryptography
   - security/py-openssl
@@ -22,7 +23,7 @@ certificate_acme_base_dir: /usr/local
 certificate_link_crt: false
 certificate_acme_link_crt: false
 
-# packages
+# packages test required
 al_sanity_packages_required:
   FreeBSD:
     default:

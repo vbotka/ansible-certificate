@@ -1,6 +1,7 @@
 ---
 # certificate vars for RedHat
 
+# packages install
 certificate_packages:
   - pyOpenSSL
   - acme-tiny
@@ -18,7 +19,7 @@ certificate_acme_base_dir: ""
 certificate_link_crt: true
 certificate_acme_link_crt: false
 
-# packages
+# packages test required
 al_sanity_packages_required:
   RedHat:
     default: []  # TODO

@@ -3,6 +3,7 @@
 
 certificate_install: true
 certificate_debug: false
+certificate_debug_classified: false
 certificate_backup_conf: false
 
 # sanity

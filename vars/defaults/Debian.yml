@@ -1,6 +1,7 @@
 ---
 # certificate vars for Debian
 
+# packages install
 certificate_packages:
   - python-openssl
   - acme-tiny
@@ -18,7 +19,7 @@ certificate_acme_base_dir: ""
 certificate_acme_link_crt: false
 certificate_link_crt: true
 
-# packages
+# packages test required
 al_sanity_packages_required:
   Ubuntu:
     default:

@@ -22,6 +22,7 @@
     type: "{{ item.type|default(certificate_default_type) }}"
     unsafe_writes: "{{ item.unsafe_writes|default(omit) }}"  # default: false
   loop: "{{ certificate_data }}"
+  no_log: "{{ not certificate_debug_classified|bool }}"
   when: not ansible_check_mode
 
 # EOF
