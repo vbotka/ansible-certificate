@@ -1,6 +1,6 @@
 ---
 
-- name: "cert-openssl-csr: Generate OpenSSL Certificate Signing Request"
+- name: "cert-openssl-csr: Generate OpenSSL Certificate Signing Request."
   openssl_csr:
     attributes: "{{ item.attributes|default(omit) }}"
     authority_cert_issuer: "{{ item.issuer|default(omit) }}"
@@ -43,10 +43,20 @@
     subject_key_identifier: "{{ item.subject_key_identifier|default(omit) }}"
     unsafe_writes: "{{ item.unsafe_writes|default(omit) }}"  # default: false
     use_common_name_for_san: "{{ item.use_common_name_for_san|default(omit) }}"  # default: true
-    version: "{{ item.version|default(omit) }}"  # The only allowed value according to RFC 2986 is 1
+    version: "{{ item.version_csr|default(omit) }}"  # The only allowed value according to RFC 2986 is 1
+  register: certificate_result_csr
   loop: "{{ certificate_data }}"
+  loop_control:
+    label: " file:{{ certificate_dir_csr }}/{{ item.csr }} CN:{{ item.CN|default('UNDEFINED') }}"
   no_log: "{{ not certificate_debug_classified|bool }}"
   when: not ansible_check_mode
+
+- name: "cert-openssl-csr: Display information on OpenSSL Certificate Signing Requests (CSR)."
+  debug:
+    var: certificate_result_csr
+  when:
+    - certificate_debug_classified|bool
+    - certificate_result_csr is defined
 
 # EOF
 ...

@@ -1,0 +1,21 @@
+---
+
+- name: "cert-openssl-stat-item: Get status of OpenSSL private key, CSR, and certificate."
+  stat:
+    path: "{{ item }}"
+  register: certificate_result_stat
+  loop:
+    - "{{ certificate_private_dir }}/{{ outer_item.private }}"
+    - "{{ certificate_dir_csr }}/{{ outer_item.csr }}"
+    - "{{ certificate_dir_certs }}/{{ outer_item.crt }}"
+
+- name: "cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate."
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  vars:
+    msg: "{{ certificate_result_stat.results|
+             json_query('[].{file: item, exists: stat.exists}')|
+             to_yaml }}"
+
+# EOF
+...

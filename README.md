@@ -24,6 +24,67 @@
 - [ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib) library of Ansible tasks.
 
 
+# Workflow
+
+- Create playbook
+
+```
+shell> cat playbook.yml
+- hosts: srv.example.com
+  roles:
+    - vbotka.certificate
+```
+
+- Display help
+
+```
+> ansible-playbook playbook.yml
+```
+
+- Run setup tasks
+
+```
+shell> ansible-playbook playbook.yml -t certificate_debug
+shell> ansible-playbook playbook.yml -t certificate_packages
+shell> ansible-playbook playbook.yml -t certificate_sanity
+shell> ansible-playbook playbook.yml -t certificate_dirs
+```
+
+- Optionaly generate a self signed OpenSSL certificates by openssl command
+
+```
+shell> ansible-playbook playbook.yml -t certificate_command
+```
+
+- Optionaly generate private keys, CSRs, and certificates step-by-step
+
+```
+shell> ansible-playbook playbook.yml -t certificate_openssl_privatekey
+shell> ansible-playbook playbook.yml -t certificate_openssl_csr
+shell> ansible-playbook playbook.yml -t certificate_openssl_certificate
+```
+
+- Optionaly generate private keys, CSRs, and certificates in one step
+
+```
+shell> ansible-playbook playbook.yml -t certificate_openssl
+```
+
+- Optionaly display information on OpenSSL private keys, CSRs, and dectificates
+
+```
+shell> ansible-playbook playbook.yml -t certificate_openssl_privatekey_info
+shell> ansible-playbook playbook.yml -t certificate_openssl_csr_info
+shell> ansible-playbook playbook.yml -t certificate_openssl_certificate_info
+```
+
+- Optionaly display status of files OpenSSL private keys, CSRs, and certificates
+
+```
+shell> ansible-playbook playbook.yml -t certificate_openssl_stat
+```
+
+
 # References
 
 - [PKCS#10 certificate request and certificate generating utility](https://www.openssl.org/docs/man1.0.2/apps/openssl-req.html)

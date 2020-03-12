@@ -49,5 +49,9 @@
 - import_tasks: cert-openssl-certificate-info.yml
   tags: certificate_openssl_certificate_info
 
+- import_tasks: cert-openssl-stat.yml
+  tags: certificate_openssl_stat
+
+
 # EOF
 ...

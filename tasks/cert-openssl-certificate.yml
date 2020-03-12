@@ -1,6 +1,6 @@
 ---
 
-- name: "cert-openssl-certificate: Generate a Self Signed OpenSSL certificate"
+- name: "cert-openssl-certificate: Generate a Self Signed OpenSSL certificate."
   openssl_certificate:
     acme_accountkey_path: "{{ item.acme_accountkey_path|default(omit) }}"
     acme_chain: "{{ item.acme_chain|default(omit) }}"
@@ -64,9 +64,19 @@
     valid_at: "{{ item.valid_at|default(omit) }}"
     valid_in: "{{ item.valid_in|default(omit) }}"
     version: "{{ item.version|default(omit) }}"
+  register: certificate_result_certificate
   loop: "{{ certificate_data }}"
+  loop_control:
+    label: " file:{{ certificate_dir_certs }}/{{ item.crt }} CN:{{ item.CN|default('UNDEFINED') }}"
   no_log: "{{ not certificate_debug_classified|bool }}"
   when: not ansible_check_mode
+
+- name: "cert-openssl-certificate: Display information on OpenSSL X.509 certificates."
+  debug:
+    var: certificate_result_certificate
+  when:
+    - certificate_debug_classified|bool
+    - certificate_result_certificate is defined
 
 # EOF
 ...

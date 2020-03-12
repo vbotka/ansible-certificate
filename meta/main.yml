@@ -29,5 +29,6 @@ galaxy_info:
     - letsencrypt
     - certificate
     - ssl
+    - acme
 dependencies: []
 ...

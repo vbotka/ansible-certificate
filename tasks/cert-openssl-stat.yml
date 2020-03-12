@@ -1,0 +1,11 @@
+---
+
+- name: "cert-openssl-stat: Get status of OpenSSL private keys, CSRs, and certificates."
+  include_tasks: fn/cert-openssl-stat-item.yml
+  loop: "{{ certificate_data }}"
+  loop_control:
+    loop_var: outer_item
+    label: "CN:{{ outer_item.CN|default('UNDEFINED') }}"
+
+# EOF
+...

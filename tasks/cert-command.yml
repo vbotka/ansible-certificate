@@ -1,6 +1,6 @@
 ---
 
-- name: "cert-command: Generate a Self Signed OpenSSL certificate"
+- name: "cert-command: Generate a Self Signed OpenSSL certificate."
   command: >
     openssl req -nodes -x509
     -subj "{{ item.subject }}"
@@ -13,7 +13,7 @@
   loop: "{{ certificate_self_signed_command }}"
   when: not ansible_check_mode
 
-- name: "cert-command: Set permisions of private keys"
+- name: "cert-command: Set permisions of private keys."
   file:
     path: "{{ certificate_dir_private }}/{{ item.private }}"
     owner: "{{ certificate_dir_private_owner }}"

@@ -18,16 +18,16 @@ certificate_help_text: |
   Display this help
   shell> ansible-playbook playbook.yml
 
-  Generate a Self Signed OpenSSL certificates by openssl command
+  Generate a self signed OpenSSL certificates by openssl command
   shell> ansible-playbook playbook.yml -t certificate_command
 
   Generate OpenSSL private keys by openssl_privatekey module
   shell> ansible-playbook playbook.yml -t certificate_openssl_privatekey
 
-  Generate OpenSSL Certificate Signing Requests by openssl_csr module
+  Generate OpenSSL certificate signing requests (CSRs) by openssl_csr module
   shell> ansible-playbook playbook.yml -t certificate_openssl_csr
 
-  Generate OpenSSL certificatse by openssl_certificate module
+  Generate OpenSSL certificates by openssl_certificate module
   shell> ansible-playbook playbook.yml -t certificate_openssl_certificate
 
   Generate OpenSSL private keys, CSRs, and certificatses by openssl_* modules
@@ -37,11 +37,14 @@ certificate_help_text: |
   Display information on OpenSSL private keys (when certificate_debug_classified=true)
   shell> ansible-playbook playbook.yml -t certificate_openssl_privatekey_info
 
-  Display information on OpenSSL Certificate Signing Requests (when certificate_debug_classified=true)
+  Display information on OpenSSL CSRs (when certificate_debug_classified=true)
   shell> ansible-playbook playbook.yml -t certificate_openssl_csr_info
 
   Display information on OpenSSL certificates (when certificate_debug_classified=true)
   shell> ansible-playbook playbook.yml -t certificate_openssl_certificate_info
+
+  Display status of files OpenSSL private keys, CSRs, and certificates
+  shell> ansible-playbook playbook.yml -t certificate_openssl_stat
 
   SETUP
 
@@ -78,6 +81,7 @@ certificate_known_tags:
   - certificate_openssl_csr_info
   - certificate_openssl_certificate
   - certificate_openssl_certificate_info
+  - certificate_openssl_stat
   - certificate_vars
   - certificate_debug
   - certificate_packages

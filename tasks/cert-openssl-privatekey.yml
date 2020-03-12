@@ -1,6 +1,6 @@
 ---
 
-- name: "cert-openssl-privatekey:: Generate OpenSSL private key (default RSA/{{ certificate_default_size }})"
+- name: "cert-openssl-privatekey: Generate OpenSSL private keys."
   openssl_privatekey:
     attributes: "{{ item.attributes|default(omit) }}"
     backup: "{{ item.backup|default(certificate_backup_conf) }}"
@@ -21,9 +21,19 @@
     state: "{{ item.state|default(omit) }}"  # default: present
     type: "{{ item.type|default(certificate_default_type) }}"
     unsafe_writes: "{{ item.unsafe_writes|default(omit) }}"  # default: false
+  register: certificate_result_privatekey
   loop: "{{ certificate_data }}"
+  loop_control:
+    label: " file:{{ certificate_private_dir }}/{{ item.private }} CN:{{ item.CN|default('UNDEFINED') }}"
   no_log: "{{ not certificate_debug_classified|bool }}"
   when: not ansible_check_mode
+
+- name: "cert-openssl-privatekey: Display information on OpenSSL private keys."
+  debug:
+    var: certificate_result_privatekey
+  when:
+    - certificate_debug_classified|bool
+    - certificate_result_privatekey is defined
 
 # EOF
 ...
