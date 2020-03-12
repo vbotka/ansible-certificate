@@ -13,14 +13,20 @@
 
 - import_tasks: packages.yml
   when: certificate_install|bool
-  tags: certificate_packages
+  tags:
+    - certificate_packages
+    - certificate_setup
 
 - import_tasks: sanity.yml
   when: certificate_sanity|bool
-  tags: certificate_sanity
+  tags:
+    - certificate_sanity
+    - certificate_setup
 
 - import_tasks: cert-dirs.yml
-  tags: certificate_dirs
+  tags:
+    - certificate_dirs
+    - certificate_setup
 
 - import_tasks: cert-command.yml
   tags: certificate_command

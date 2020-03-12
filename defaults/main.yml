@@ -60,6 +60,10 @@ certificate_help_text: |
   Create directories
   shell> ansible-playbook playbook.yml -t certificate_dirs
 
+  Install packages, test sanity, and create directories
+  (-t certificate_packages,certificate_sanity,certificate_dirs)
+  shell> ansible-playbook playbook.yml -t certificate_setup
+
   NOTES
 
   1) Example playbook.yml
@@ -87,6 +91,7 @@ certificate_known_tags:
   - certificate_packages
   - certificate_sanity
   - certificate_dirs
+  - certificate_setup
 
 # sanity
 certificate_sanity: true
