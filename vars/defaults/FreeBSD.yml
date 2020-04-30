@@ -11,6 +11,7 @@ certificate_packages:
   - security/py-acme
 
 # ssl directories
+certificate_dir: /usr/local/etc/ssl
 certificate_group: wheel
 
 # ssl private

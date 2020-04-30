@@ -1,30 +1,38 @@
-## certificate
+# certificate
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-certificate.svg?branch=master)](https://travis-ci.org/vbotka/ansible-certificate)
 
 [Ansible role](https://galaxy.ansible.com/vbotka/certificate/). Manage SSL certificates.
 
+Please feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-certificate/issues).
 
-# Requirements
+
+## Tested providers
+
+Tested providers: selfsigned
+Not tested yet: acme, entrust, ownca
+
+
+## Requirements
 
 - [cryptography](https://cryptography.io/en/latest/)
 - [openssl](https://www.openssl.org/)
 - [acme-tiny](https://pypi.org/project/acme-tiny/)
 
 
-# Role Variables
+## Role Variables
 
 - review default variables in *defaults/main.yml*
 - review OS specific variables in *vars/defaults/*
 - review examples in *vars/main.yml*
 
 
-# Dependencies
+## Dependencies
 
 - [ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib) library of Ansible tasks.
 
 
-# Workflow
+## Workflow
 
 - Create playbook
 
@@ -38,7 +46,7 @@ shell> cat playbook.yml
 - Display help
 
 ```
-> ansible-playbook playbook.yml
+shell> ansible-playbook playbook.yml
 ```
 
 - Run setup tasks
@@ -85,7 +93,7 @@ shell> ansible-playbook playbook.yml -t certificate_openssl_stat
 ```
 
 
-# References
+## References
 
 - [PKCS#10 certificate request and certificate generating utility](https://www.openssl.org/docs/man1.0.2/apps/openssl-req.html)
 - [SSL and TLS Deployment Best Practices](https://github.com/ssllabs/research/wiki/SSL-and-TLS-Deployment-Best-Practices)
@@ -95,11 +103,11 @@ shell> ansible-playbook playbook.yml -t certificate_openssl_stat
 - [ACME-TLS-ALPN Draft 3.TLS with Application Level Protocol Negotiation (TLS ALPN) Challenge](https://tools.ietf.org/html/draft-ietf-acme-tls-alpn-05#section-3)
 
 
-# License
+## License
 
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
 
-# Author Information
+## Author Information
 
 [Vladimir Botka](https://botka.link)

@@ -54,24 +54,32 @@ certificate_help_text: |
   Install packages (when certificate_install=true)
   shell> ansible-playbook playbook.yml -t certificate_packages
 
-  Test the sanity (when certificate_sanity=true)
-  shell> ansible-playbook playbook.yml -t certificate_sanity
-
   Create directories
   shell> ansible-playbook playbook.yml -t certificate_dirs
 
-  Install packages, test sanity, and create directories
-  (-t certificate_packages,certificate_sanity,certificate_dirs)
+  Test the sanity (when certificate_sanity=true)
+  shell> ansible-playbook playbook.yml -t certificate_sanity
+
+  Install packages, create directories, and test sanity
+  (-t certificate_packages,certificate_dirs,certificate_sanity)
   shell> ansible-playbook playbook.yml -t certificate_setup
 
   NOTES
 
   1) Example playbook.yml
-
      sheel> cat playbook.yml
      - hosts: srv.example.com
        roles:
          - vbotka.certificate
+
+  2) Best practice
+     shell> ansible-playbook playbook.yml -t certificate_debug
+     shell> ansible-playbook playbook.yml -t certificate_setup
+     shell> ansible-playbook playbook.yml -t certificate_openssl
+     shell> ansible-playbook playbook.yml -t certificate_openssl_stat
+
+  3) Optimized for yaml callback
+     shell> export ANSIBLE_STDOUT_CALLBACK=yaml
 
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   https://github.com/vbotka/ansible-certificate
@@ -111,7 +119,6 @@ linux_install_retries: 10
 linux_install_delay: 5
 
 # ssl directories
-certificate_dir: /etc/ssl
 certificate_dir_csr: "{{ certificate_dir }}/csr"
 certificate_dir_certs: "{{ certificate_dir }}/certs"
 certificate_owner: root
@@ -133,10 +140,11 @@ certificate_acme_dir: "{{certificate_acme_base_dir}}/etc/letsencrypt"
 certificate_acme_dir_csr: "{{ certificate_acme_dir }}/csr"
 certificate_acme_dir_certs: "{{ certificate_acme_dir }}/archive"
 certificate_acme_dir_private: "{{ certificate_acme_dir }}/keys"
-certificate_acme_dir_challenges: "{{ certificate_acme_dir }}/challenges"
+certificate_acme_dir_challenges: "/usr/local/www/apache24/data/.well-known/acme-challenge/"
 certificate_acme_owner: root
 certificate_acme_group: wheel
-certificate_acme_dir_mode: "0755"
+certificate_acme_dir_mode_private: "0700"
+certificate_acme_dir_mode_public: "0755"
 
 # self-signed certs by openssl command
 certificate_self_signed_command: []

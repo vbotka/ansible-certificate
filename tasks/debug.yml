@@ -39,7 +39,8 @@
 
       certificate_acme_owner [{{ certificate_acme_owner }}]
       certificate_acme_group [{{ certificate_acme_group }}]
-      certificate_acme_dir_mode [{{ certificate_acme_dir_mode }}]
+      certificate_acme_dir_mode_private [{{ certificate_acme_dir_mode_private }}]
+      certificate_acme_dir_mode_public [{{ certificate_acme_dir_mode_public }}]
       certificate_acme_base_dir [{{ certificate_acme_base_dir }}]
       certificate_acme_dir [{{ certificate_acme_dir }}]
       certificate_acme_dir_csr [{{ certificate_acme_dir_csr }}]

@@ -1,6 +1,6 @@
 ---
 
-- name: "cert-openssl-certificate: Generate a Self Signed OpenSSL certificate."
+- name: "cert-openssl-certificate: Generate and/or check OpenSSL certificates"
   openssl_certificate:
     acme_accountkey_path: "{{ item.acme_accountkey_path|default(omit) }}"
     acme_chain: "{{ item.acme_chain|default(omit) }}"

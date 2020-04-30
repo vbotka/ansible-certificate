@@ -11,21 +11,14 @@ galaxy_info:
     - name: FreeBSD
       versions:
         - 11.3
-        - 12.0
         - 12.1
     - name: Ubuntu
       versions:
         - bionic
-        - cosmic
-        - disco
-        - eoan
-    - name: EL
-      versions:
-        - 7
+        - focal
   galaxy_tags:
     - freebsd
     - ubuntu
-    - centos
     - letsencrypt
     - certificate
     - ssl

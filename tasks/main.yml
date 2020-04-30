@@ -2,14 +2,18 @@
 # certificate tasks
 
 - import_tasks: vars.yml
-  tags: [certificate_vars, always]
+  tags:
+    - certificate_vars
+    - always
 
 - import_tasks: help.yml
   tags: always
 
 - import_tasks: debug.yml
   when: certificate_debug|bool
-  tags: [certificate_debug, always]
+  tags:
+    - certificate_debug
+    - always
 
 - import_tasks: packages.yml
   when: certificate_install|bool
@@ -17,15 +21,15 @@
     - certificate_packages
     - certificate_setup
 
+- import_tasks: cert-dirs.yml
+  tags:
+    - certificate_dirs
+    - certificate_setup
+
 - import_tasks: sanity.yml
   when: certificate_sanity|bool
   tags:
     - certificate_sanity
-    - certificate_setup
-
-- import_tasks: cert-dirs.yml
-  tags:
-    - certificate_dirs
     - certificate_setup
 
 - import_tasks: cert-command.yml

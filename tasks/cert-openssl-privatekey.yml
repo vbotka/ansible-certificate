@@ -24,8 +24,7 @@
   register: certificate_result_privatekey
   loop: "{{ certificate_data }}"
   loop_control:
-    label: " file:{{ certificate_private_dir }}/{{ item.private }} CN:{{ item.CN|default('UNDEFINED') }}"
-  no_log: "{{ not certificate_debug_classified|bool }}"
+    label: "file:{{ certificate_private_dir }}/{{ item.private }} CN:{{ item.CN|default('UNDEFINED') }}"
   when: not ansible_check_mode
 
 - name: "cert-openssl-privatekey: Display information on OpenSSL private keys."

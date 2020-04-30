@@ -1,12 +1,15 @@
 ---
 # certificate vars for RedHat
 
+certificate_python_version: "{{ ansible_python_version.split('.')[0:2]|join() }}"
+
 # packages install
 certificate_packages:
   - pyOpenSSL
   - acme-tiny
 
 # ssl directories
+certificate_dir: /etc/ssl
 certificate_group: root
 
 # ssl private
@@ -16,8 +19,8 @@ certificate_private_file_mode: "0600"
 
 # acme directories
 certificate_acme_base_dir: ""
-certificate_link_crt: true
 certificate_acme_link_crt: false
+certificate_link_crt: true
 
 # packages test required
 al_sanity_packages_required:
