@@ -17,7 +17,7 @@ certificate_help_text: |
 
   Display this help
   shell> ansible-playbook playbook.yml
-
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   Generate a self signed OpenSSL certificates by openssl command
   shell> ansible-playbook playbook.yml -t certificate_command
 
@@ -33,7 +33,7 @@ certificate_help_text: |
   Generate OpenSSL private keys, CSRs, and certificatses by openssl_* modules
   (-t certificate_openssl_privatekey,certificate_openssl_csr,certificate_openssl_certificate)
   shell> ansible-playbook playbook.yml -t certificate_openssl
-
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   Display information on OpenSSL private keys (when certificate_debug_classified=true)
   shell> ansible-playbook playbook.yml -t certificate_openssl_privatekey_info
 
@@ -45,7 +45,7 @@ certificate_help_text: |
 
   Display status of files OpenSSL private keys, CSRs, and certificates
   shell> ansible-playbook playbook.yml -t certificate_openssl_stat
-
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   SETUP
 
   Display debug info (when certificate_debug=true)
@@ -63,7 +63,7 @@ certificate_help_text: |
   Install packages, create directories, and test sanity
   (-t certificate_packages,certificate_dirs,certificate_sanity)
   shell> ansible-playbook playbook.yml -t certificate_setup
-
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   NOTES
 
   1) Example playbook.yml
@@ -80,7 +80,6 @@ certificate_help_text: |
 
   3) Optimized for yaml callback
      shell> export ANSIBLE_STDOUT_CALLBACK=yaml
-
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   https://github.com/vbotka/ansible-certificate
 
