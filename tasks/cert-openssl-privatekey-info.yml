@@ -2,7 +2,7 @@
 
 - name: "cert-openssl-privatekey-info: Get information on OpenSSL private keys."
   openssl_privatekey_info:
-    passphrase: "{{ item.passphrase | default(omit) }}"
+    passphrase: "{{ item.passphrase|default(omit) }}"
     path: "{{ certificate_private_dir }}/{{ item.private }}"
     select_crypto_backend: "{{ item.backend|default(certificate_default_backend) }}"
     return_private_key_data: "{{ item.return_private_key_data|default(omit) }}"  # default: false
