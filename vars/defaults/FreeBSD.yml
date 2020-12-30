@@ -24,7 +24,7 @@ certificate_acme_base_dir: /usr/local
 certificate_link_crt: false
 certificate_acme_link_crt: false
 
-# packages test required
+# sanity: packages test required
 al_sanity_packages_required:
   FreeBSD:
     default:
@@ -32,6 +32,9 @@ al_sanity_packages_required:
         - "py{{ certificate_python_version }}-openssl"
       - - "py{{ certificate_python_version }}-acme"
       - - acme-tiny
+
+# sanity: override supported versions
+al_supported_versions_override: ['11.3', '11.4', '12.0', '12.1', '12.2']
 
 # EOF
 ...
