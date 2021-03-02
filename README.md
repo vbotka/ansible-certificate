@@ -1,10 +1,12 @@
 # certificate
 
-[![Build Status](https://travis-ci.org/vbotka/ansible-certificate.svg?branch=master)](https://travis-ci.org/vbotka/ansible-certificate)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/certificate)[![Build Status](https://travis-ci.org/vbotka/ansible-certificate.svg?branch=master)](https://travis-ci.org/vbotka/ansible-certificate)
 
 [Ansible role](https://galaxy.ansible.com/vbotka/certificate/). Manage SSL certificates.
 
-Please feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-certificate/issues).
+Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-certificate/issues).
+
+[Contributions are welcome](https://github.com/firstcontributions/first-contributions).
 
 
 ## Tested providers
