@@ -3,7 +3,7 @@
 - name: "cert-openssl-certificate: Block: Generate and/or check OpenSSL certificates"
   block:
     - name: "cert-openssl-certificate: Generate and/or check OpenSSL certificates"
-      openssl_certificate:
+      community.crypto.x509_certificate:
         acme_accountkey_path: "{{ item.acme_accountkey_path|default(omit) }}"
         acme_chain: "{{ item.acme_chain|default(omit) }}"
         acme_challenge_path: "{{ item.acme_challenge_path|default(omit) }}"

@@ -1,7 +1,7 @@
 ---
 
 - name: "cert-openssl-csr-info: Get information on OpenSSL Certificate Signing Requests (CSR)."
-  openssl_csr_info:
+  community.crypto.openssl_csr_info:
     path: "{{ certificate_dir_csr }}/{{ item.csr }}"
     select_crypto_backend: "{{ item.backend|default(certificate_default_backend) }}"
   register: certificate_result_csr_info

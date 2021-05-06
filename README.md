@@ -8,6 +8,9 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 [Contributions are welcome](https://github.com/firstcontributions/first-contributions).
 
+## Supported Releases
+
+* Production: 1.4, 2.0
 
 ## Tested providers
 
@@ -15,7 +18,17 @@ Tested providers: selfsigned
 Not tested yet: acme, entrust, ownca
 
 
-## Requirements
+## Requirements and dependencies
+
+### Roles
+
+- [ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib) library of Ansible tasks.
+
+### Collections
+
+- [community.crypto](https://galaxy.ansible.com/community/crypto)
+
+### Packages
 
 - [cryptography](https://cryptography.io/en/latest/)
 - [openssl](https://www.openssl.org/)
@@ -29,12 +42,9 @@ Not tested yet: acme, entrust, ownca
 - review examples in *vars/main.yml*
 
 
-## Dependencies
-
-- [ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib) library of Ansible tasks.
-
-
 ## Workflow
+
+- Install the role and required dependencies
 
 - Create playbook
 
