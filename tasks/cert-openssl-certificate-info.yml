@@ -1,7 +1,7 @@
 ---
 
 - name: "cert-openssl-certificate-info: Get information on OpenSSL X.509 certificates."
-  openssl_certificate_info:
+  community.crypto.x509_certificate_info:
     path: "{{ certificate_dir_certs }}/{{ item.crt }}"
     select_crypto_backend: "{{ item.backend|default(certificate_default_backend) }}"
     valid_at: "{{ item.valid_at|default(omit) }}"

@@ -1,7 +1,7 @@
 ---
 
 - name: "cert-openssl-privatekey: Generate OpenSSL private keys."
-  openssl_privatekey:
+  community.crypto.openssl_privatekey:
     attributes: "{{ item.attributes|default(omit) }}"
     backup: "{{ item.backup|default(certificate_backup_conf) }}"
     cipher: "{{ item.cipher | default(omit) }}"

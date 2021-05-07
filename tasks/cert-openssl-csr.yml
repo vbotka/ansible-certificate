@@ -1,7 +1,7 @@
 ---
 
 - name: "cert-openssl-csr: Generate OpenSSL Certificate Signing Request."
-  openssl_csr:
+  community.crypto.openssl_csr:
     attributes: "{{ item.attributes|default(omit) }}"
     authority_cert_issuer: "{{ item.issuer|default(omit) }}"
     authority_cert_serial_number: "{{ item.serial_number|default(omit) }}"
