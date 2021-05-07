@@ -8,9 +8,6 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 [Contributions are welcome](https://github.com/firstcontributions/first-contributions).
 
-## Supported Releases
-
-* Production: 1.4, 2.0
 
 ## Tested providers
 
