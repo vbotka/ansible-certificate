@@ -2,7 +2,7 @@
 
 # FreeBSD
 - name: "packages: Install packages FreeBSD"
-  pkgng:
+  community.general.pkgng:
     name: "{{ certificate_packages }}"
   register: result
   retries: "{{ freebsd_install_retries }}"
@@ -13,7 +13,7 @@
     - freebsd_install_method|lower == "packages"
 
 - name: "packages: Install ports FreeBSD"
-  portinstall:
+  community.general.portinstall:
     name: "{{ item }}"
   register: result
   retries: "{{ freebsd_install_retries }}"
@@ -26,7 +26,7 @@
 
 # Linux
 - name: "packages: Install packages Linux"
-  package:
+  ansible.builtin.package:
     name: "{{ certificate_packages }}"
   register: result
   retries: "{{ linux_install_retries }}"

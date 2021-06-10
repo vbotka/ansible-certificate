@@ -1,7 +1,7 @@
 ---
 
 - name: "cert-openssl-stat: Get status of OpenSSL private keys, CSRs, and certificates."
-  include_tasks: fn/cert-openssl-stat-item.yml
+  ansible.builtin.include_tasks: fn/cert-openssl-stat-item.yml
   loop: "{{ certificate_data }}"
   loop_control:
     loop_var: outer_item

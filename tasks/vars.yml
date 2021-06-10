@@ -1,35 +1,14 @@
 ---
 
-- name: >
-    vars: Default OS specific variables for
-    {{ ansible_os_family }},
-    {{ ansible_distribution }}
-    {{ ansible_distribution_release }}
-  include_vars: "{{ item }}"
-  with_first_found:
-    - files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
-        - "{{ ansible_distribution }}.yml"
-        - "{{ ansible_os_family }}.yml"
-        - defaults.yml
-        - default.yml
-      paths: "{{ role_path }}/vars/defaults"
-
-- name: >
-    vars: Custom OS specific variables for
-    {{ ansible_os_family }},
-    {{ ansible_distribution }}
-    {{ ansible_distribution_release }}
-  include_vars: "{{ item }}"
-  with_first_found:
-    - files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
-        - "{{ ansible_distribution }}.yml"
-        - "{{ ansible_os_family }}.yml"
-        - defaults.yml
-        - default.yml
-      skip: true
-      paths: "{{ role_path }}/vars"
+- name: "vars: Include OS vars"
+  block:
+    - name: "vars: Set variables for al_include_os_vars_path"
+      ansible.builtin.set_fact:
+        al_os_vars_path: "{{ role_path }}"
+    - name: "vars: Include OS vars"
+      ansible.builtin.include_role:
+        name: vbotka.ansible_lib
+        tasks_from: al_include_os_vars_path
 
 # EOF
 ...

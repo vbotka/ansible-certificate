@@ -72,14 +72,14 @@
         label: " file:{{ certificate_dir_certs }}/{{ item.crt }} CN:{{ item.CN|default('UNDEFINED') }}"
   rescue:
     - name: "cert-openssl-certificate: Rescue: Display information on OpenSSL X.509 certificates."
-      debug:
+      ansible.builtin.debug:
         var: certificate_result_certificate
       when:
         - certificate_debug_classified|bool
         - certificate_result_certificate is defined
 
 - name: "cert-openssl-certificate: Display information on OpenSSL X.509 certificates."
-  debug:
+  ansible.builtin.debug:
     var: certificate_result_certificate
   when:
     - certificate_debug_classified|bool
