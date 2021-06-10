@@ -1,0 +1,52 @@
+---
+
+- name: "vars: Default vars for
+               {{ ansible_os_family }}
+               {{ ansible_distribution }}
+               {{ ansible_distribution_release }}"
+  ansible.builtin.include_vars: "{{ file }}"
+  register: result
+  vars:
+    file: "{{ lookup('first_found', params) }}"
+    params:
+      skip: true
+      files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+        - defaults.yml
+        - default.yml
+      paths:
+        - "{{ role_path }}/vars/defaults"
+
+- name: "vars: Debug default vars"
+  ansible.builtin.debug:
+    var: result.ansible_included_var_files
+  when: certificate_debug|bool
+
+- name: "vars: Custom vars for
+               {{ ansible_os_family }}
+               {{ ansible_distribution }}
+               {{ ansible_distribution_release }}"
+  ansible.builtin.include_vars: "{{ file }}"
+  register: result
+  vars:
+    file: "{{ lookup('first_found', params) }}"
+    params:
+      skip: true
+      files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+        - defaults.yml
+        - default.yml
+      paths:
+        - "{{ role_path }}/vars"
+
+- name: "vars: Debug custom vars"
+  ansible.builtin.debug:
+    var: result.ansible_included_var_files
+  when: certificate_debug|bool
+
+# EOF
+...

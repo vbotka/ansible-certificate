@@ -24,6 +24,7 @@ Not tested yet: acme, entrust, ownca
 ### Collections
 
 - [community.crypto](https://galaxy.ansible.com/community/crypto)
+- [community.general](https://galaxy.ansible.com/community/general)
 
 ### Packages
 
@@ -34,9 +35,9 @@ Not tested yet: acme, entrust, ownca
 
 ## Role Variables
 
-- review default variables in *defaults/main.yml*
-- review OS specific variables in *vars/defaults/*
-- review examples in *vars/main.yml*
+- See default variables in *defaults/main.yml*
+- See OS specific variables in *vars/defaults/*
+- See examples in *vars/main.yml*
 
 
 ## Workflow

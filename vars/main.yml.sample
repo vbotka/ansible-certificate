@@ -6,7 +6,7 @@
 #    private: "example.com.key"
 #    crt: "example.com.crt"
 #    days: "3650"
-#    cypher: "rsa:2048"
+#    cipher: "rsa:2048"
 
 # Selfsigned certificate by Ansible modules
 # certificate_data:

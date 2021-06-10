@@ -71,10 +71,11 @@
       {% endfor %}
       {% endif %}
 
+      certificate_python_version [{{ certificate_python_version }}]
       al_debug [{{ al_debug }}]
       al_sanity_packages_required
       {{ al_sanity_packages_required|to_yaml }}
-  debug:
+  ansible.builtin.debug:
     msg: "{{ msg.split('\n') }}"
 
 # EOF

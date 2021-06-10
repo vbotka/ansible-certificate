@@ -51,7 +51,7 @@
   when: not ansible_check_mode
 
 - name: "cert-openssl-csr: Display information on OpenSSL Certificate Signing Requests (CSR)."
-  debug:
+  ansible.builtin.debug:
     var: certificate_result_csr
   when:
     - certificate_debug_classified|bool

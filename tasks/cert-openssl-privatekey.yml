@@ -28,7 +28,7 @@
   when: not ansible_check_mode
 
 - name: "cert-openssl-privatekey: Display information on OpenSSL private keys."
-  debug:
+  ansible.builtin.debug:
     var: certificate_result_privatekey
   when:
     - certificate_debug_classified|bool

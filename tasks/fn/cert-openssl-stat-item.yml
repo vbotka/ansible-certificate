@@ -1,7 +1,7 @@
 ---
 
 - name: "cert-openssl-stat-item: Get status of OpenSSL private key, CSR, and certificate."
-  stat:
+  ansible.builtin.stat:
     path: "{{ item }}"
   register: certificate_result_stat
   loop:
@@ -10,7 +10,7 @@
     - "{{ certificate_dir_certs }}/{{ outer_item.crt }}"
 
 - name: "cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate."
-  debug:
+  ansible.builtin.debug:
     msg: "{{ msg.split('\n') }}"
   vars:
     msg: "{{ certificate_result_stat.results|

@@ -12,7 +12,7 @@
   when: not ansible_check_mode
 
 - name: "cert-openssl-certificate-info: Display information on OpenSSL X.509 certificates."
-  debug:
+  ansible.builtin.debug:
     var: certificate_result_certificate_info
   when:
     - certificate_debug_classified|bool

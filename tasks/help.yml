@@ -1,11 +1,12 @@
 ---
 
-- name: 'Help'
+- name: "help: Block"
   block:
-    - name: 'Help'
-      debug:
+    - name: "help: Help"
+      ansible.builtin.debug:
         msg: "{{ certificate_help_text.split('\n') }}"
-    - meta: end_play
+    - name: "help: End play"
+      meta: end_play
   vars:
     my_tags: "{{ ansible_run_tags|difference(['all']) }}"
   when: (my_tags|length == 0) or
