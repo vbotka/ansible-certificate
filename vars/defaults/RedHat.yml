@@ -1,12 +1,12 @@
 ---
 # certificate vars for RedHat
 
-certificate_python_version: "{{ ansible_python_version.split('.')[0:2]|join() }}"
-
 # packages install
 certificate_packages:
   - pyOpenSSL
   - acme-tiny
+
+certificate_packages2: []
 
 # ssl directories
 certificate_dir: /etc/ssl

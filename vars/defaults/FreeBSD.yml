@@ -1,14 +1,26 @@
 ---
 # certificate vars for FreeBSD
 
-certificate_python_version: "{{ ansible_python_version.split('.')[0:2]|join() }}"
-
 # packages install
-certificate_packages:
+certificate_packages: "{{ (freebsd_install_method == 'packages')|
+                           ternary(certificate_packages_basic,
+                                   certificate_ports_basic) }}"
+certificate_packages_basic:
+  - py-cryptography
+  - py-openssl
+  - py-acme
+certificate_ports_basic:
   - security/py-cryptography
   - security/py-openssl
-  - security/py-acme-tiny
   - security/py-acme
+
+certificate_packages2: "{{ (freebsd_install_method == 'packages')|
+                            ternary(certificate_packages_extra,
+                                    certificate_ports_extra) }}"
+certificate_packages_extra:
+  - acme-tiny
+certificate_ports_extra:
+  - security/py-acme-tiny
 
 # ssl directories
 certificate_dir: /usr/local/etc/ssl
@@ -35,6 +47,38 @@ al_sanity_packages_required:
 
 # sanity: override supported versions
 al_supported_versions_override: ['11.3', '11.4', '12.0', '12.1', '12.2', '13.0']
+
+# Notes
+#
+# 1) Name of the port and package is inconsistent
+# shell> pkg info acme-tiny-4.1.0
+# acme-tiny-4.1.0
+# Name           : acme-tiny
+# Version        : 4.1.0
+# Installed on   : Thu May 20 11:08:00 2021 CEST
+# Origin         : security/py-acme-tiny
+# Architecture   : FreeBSD:13:*
+# Prefix         : /usr/local
+# Categories     : security python
+# Licenses       : MIT
+# Maintainer     : mat@FreeBSD.org
+# WWW            : https://github.com/diafygi/acme-tiny
+# Comment        : Tiny script to issue and renew TLS certs from Let's Encrypt
+# Options        :
+# DOCS           : on
+# Annotations    :
+# repo_type      : binary
+# repository     : FreeBSD
+# Flat size      : 20.8KiB
+# Description    :
+# This is a tiny, auditable script that you can throw on your server to issue and
+# renew Let's Encrypt certificates. Since it has to be run on your server and
+# have access to your private Let's Encrypt account key, I tried to make it as
+# tiny as possible (currently less than 200 lines). The only prerequisites are
+# python and openssl.
+#
+# WWW: https://github.com/diafygi/acme-tiny
+
 
 # EOF
 ...

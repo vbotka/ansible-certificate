@@ -39,6 +39,21 @@ Not tested yet: acme, entrust, ownca
 - See OS specific variables in *vars/defaults/*
 - See examples in *vars/main.yml*
 
+### freebsd_flavors_enable (default: False)
+
+This variable enables the flavors stored in *freebsd_flavors*. By default the flavors are
+disabled. This means that the default flavors from */etc/make.conf* will be installed. Enable this
+variable only if *freebsd_install_method=packages*. Ports won't recognize the flavors and the
+installation will crash. See the variables *certificate_packages* and *certificate_packages2* in
+*vars/defaults/FreeBSD.yml*. There naming of the package *acme-tiny* and the port
+*security/py-acme-tiny* is not consistent. Fit the names to the current status of the ports
+collections and the packages. Put your changes into the file *vars/FreeBSD.yml* if necessary.
+
+### certificate_sanity_packages (default: True)
+
+This variable enables the testing of the packages installed. By default the flavor
+*certificate_python_version* is required. The default is the version of *ansible_python_version*.
+
 
 ## Workflow
 
@@ -68,13 +83,13 @@ shell> ansible-playbook playbook.yml -t certificate_sanity
 shell> ansible-playbook playbook.yml -t certificate_dirs
 ```
 
-- Optionaly generate a self signed OpenSSL certificates by openssl command
+- Optionally generate a self signed OpenSSL certificates by openssl command
 
 ```
 shell> ansible-playbook playbook.yml -t certificate_command
 ```
 
-- Optionaly generate private keys, CSRs, and certificates step-by-step
+- Optionally generate private keys, CSRs, and certificates step-by-step
 
 ```
 shell> ansible-playbook playbook.yml -t certificate_openssl_privatekey
@@ -82,13 +97,13 @@ shell> ansible-playbook playbook.yml -t certificate_openssl_csr
 shell> ansible-playbook playbook.yml -t certificate_openssl_certificate
 ```
 
-- Optionaly generate private keys, CSRs, and certificates in one step
+- Optionally generate private keys, CSRs, and certificates in one step
 
 ```
 shell> ansible-playbook playbook.yml -t certificate_openssl
 ```
 
-- Optionaly display information on OpenSSL private keys, CSRs, and dectificates
+- Optionally display information on OpenSSL private keys, CSRs, and certificates
 
 ```
 shell> ansible-playbook playbook.yml -t certificate_openssl_privatekey_info
@@ -96,7 +111,7 @@ shell> ansible-playbook playbook.yml -t certificate_openssl_csr_info
 shell> ansible-playbook playbook.yml -t certificate_openssl_certificate_info
 ```
 
-- Optionaly display status of files OpenSSL private keys, CSRs, and certificates
+- Optionally display status of files OpenSSL private keys, CSRs, and certificates
 
 ```
 shell> ansible-playbook playbook.yml -t certificate_openssl_stat
@@ -111,6 +126,7 @@ shell> ansible-playbook playbook.yml -t certificate_openssl_stat
 - [ACME Protocol Updates](https://letsencrypt.org/docs/acme-protocol-updates/)
 - [ACME RFC8555 8.Identifier Validation Challenges](https://tools.ietf.org/html/rfc8555#section-8)
 - [ACME-TLS-ALPN Draft 3.TLS with Application Level Protocol Negotiation (TLS ALPN) Challenge](https://tools.ietf.org/html/draft-ietf-acme-tls-alpn-05#section-3)
+- [Flavors - FreeBSD Handbook](https://docs.freebsd.org/en/books/porters-handbook/flavors/)
 
 
 ## License

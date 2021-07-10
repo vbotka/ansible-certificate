@@ -1,14 +1,14 @@
 ---
 # certificate vars for Debian
 
-certificate_python_version: "{{ ansible_python_version.split('.')[0:2]|join() }}"
-
 # packages install
 certificate_packages:
   - python-cryptography
   - python3-cryptography
   - python-openssl
   - acme-tiny
+
+certificate_packages2: []
 
 # ssl directories
 certificate_dir: /etc/ssl

@@ -3,7 +3,7 @@
 # FreeBSD
 - name: "packages: Install packages FreeBSD"
   community.general.pkgng:
-    name: "{{ certificate_packages }}"
+    name: "{{ certificate_packages + certificate_packages2 }}"
   register: result
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
@@ -19,7 +19,7 @@
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
-  loop: "{{ certificate_packages }}"
+  loop: "{{ certificate_packages + certificate_packages2 }}"
   when:
     - ansible_os_family == "FreeBSD"
     - freebsd_install_method|lower == "ports"
@@ -27,7 +27,7 @@
 # Linux
 - name: "packages: Install packages Linux"
   ansible.builtin.package:
-    name: "{{ certificate_packages }}"
+    name: "{{ certificate_packages + certificate_packages2 }}"
   register: result
   retries: "{{ linux_install_retries }}"
   until: result is succeeded
