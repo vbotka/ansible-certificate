@@ -1,7 +1,7 @@
 ---
 
 # certificate defaults
-certificate_role_version: 2.0.1
+certificate_role_version: 2.1.0
 certificate_install: true
 certificate_debug: false
 certificate_debug_classified: false
@@ -100,6 +100,9 @@ certificate_known_tags:
   - certificate_dirs
   - certificate_setup
 
+# Python
+certificate_python_version: "{{ ansible_python_version.split('.')[0:2]|join() }}"
+
 # sanity
 certificate_sanity: true
 certificate_sanity_platform: true
@@ -112,6 +115,9 @@ freebsd_install_method: packages
 freebsd_use_packages: true
 freebsd_install_retries: 10
 freebsd_install_delay: 5
+freebsd_flavors_enable: false
+freebsd_flavor_python: "{{ 'py' ~ certificate_python_version }}"
+freebsd_flavors: ["{{ freebsd_flavor_python }}"]
 
 # Linux
 linux_install_retries: 10

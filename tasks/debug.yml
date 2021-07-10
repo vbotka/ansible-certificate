@@ -51,9 +51,6 @@
       certificate_acme_link_crt [{{ certificate_acme_link_crt }}]
       certificate_link_crt [{{ certificate_link_crt }}]
 
-      certificate_install [{{ certificate_install }}]
-      certificate_packages
-      {{ certificate_packages|to_nice_yaml }}
       certificate_self_signed_command
       {{ certificate_self_signed_command|to_nice_yaml }}
 
@@ -75,6 +72,22 @@
       al_debug [{{ al_debug }}]
       al_sanity_packages_required
       {{ al_sanity_packages_required|to_yaml }}
+
+      linux_install_retries [{{ linux_install_retries }}]
+      linux_install_delay [{{ linux_install_delay }}]
+
+      freebsd_install_method [{{ freebsd_install_method }}]
+      freebsd_use_packages [{{ freebsd_use_packages }}]
+      freebsd_install_retries [{{ freebsd_install_retries }}]
+      freebsd_install_delay [{{ freebsd_install_delay }}]
+      freebsd_flavors_enable [{{ freebsd_flavors_enable }}]
+      freebsd_flavors
+      {{ freebsd_flavors|to_yaml }}
+      certificate_install [{{ certificate_install }}]
+      certificate_packages
+      {{ certificate_packages|to_nice_yaml }}
+      certificate_packages2
+      {{ certificate_packages2|to_nice_yaml }}
   ansible.builtin.debug:
     msg: "{{ msg.split('\n') }}"
 

@@ -10,5 +10,22 @@
         name: vbotka.ansible_lib
         tasks_from: al_include_os_vars_path
 
+- name: "vars: Set flavors"
+  block:
+    - name: "vars: Set variables for al_bsd_ports_set_flavor"
+      ansible.builtin.set_fact:
+        al_bsd_ports_list: "{{ certificate_packages }}"
+        al_bsd_ports_flavors: "{{ freebsd_flavors }}"
+    - name: "vars: Set flavor"
+      ansible.builtin.include_role:
+        name: vbotka.ansible_lib
+        tasks_from: al_bsd_ports_set_flavor
+    - name: "vars: Get results"
+      ansible.builtin.set_fact:
+        certificate_packages: "{{ al_bsd_ports_list }}"
+  when:
+    - freebsd_flavors_enable|bool
+    - ansible_os_family == "FreeBSD"
+
 # EOF
 ...
