@@ -26,5 +26,4 @@ notifications:
 
 
 branches:
-  only:
-    - master
+  only: [master]
