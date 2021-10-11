@@ -11,7 +11,7 @@
 
 - name: "cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate."
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   vars:
     msg: "{{ certificate_result_stat.results|
              json_query('[].{file: item, exists: stat.exists}')|

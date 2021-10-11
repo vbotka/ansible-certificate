@@ -12,7 +12,7 @@
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
   when: certificate_debug|bool
-  tags: [certificate_debug, always]
+  tags: certificate_debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml

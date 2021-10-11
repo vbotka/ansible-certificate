@@ -1,25 +1,12 @@
 ---
 # certificate vars for FreeBSD
 
-# packages install
-certificate_packages: "{{ (freebsd_install_method == 'packages')|
-                           ternary(certificate_packages_basic,
-                                   certificate_ports_basic) }}"
-certificate_packages_basic:
-  - py-cryptography
-  - py-openssl
-  - py-acme
-certificate_ports_basic:
+certificate_packages:
   - security/py-cryptography
   - security/py-openssl
   - security/py-acme
 
-certificate_packages2: "{{ (freebsd_install_method == 'packages')|
-                            ternary(certificate_packages_extra,
-                                    certificate_ports_extra) }}"
-certificate_packages_extra:
-  - acme-tiny
-certificate_ports_extra:
+certificate_packages2:
   - security/py-acme-tiny
 
 # ssl directories
