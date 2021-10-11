@@ -4,7 +4,7 @@
   block:
     - name: "help: Help"
       ansible.builtin.debug:
-        msg: "{{ certificate_help_text.split('\n') }}"
+        msg: "{{ '{}'.format(certificate_help_text) }}"
     - name: "help: End play"
       meta: end_play
   vars:

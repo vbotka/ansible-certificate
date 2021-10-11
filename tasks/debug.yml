@@ -89,7 +89,7 @@
       certificate_packages2
       {{ certificate_packages2|to_nice_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
 
 # EOF
 ...
