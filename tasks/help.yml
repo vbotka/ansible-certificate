@@ -6,7 +6,7 @@
       ansible.builtin.debug:
         msg: "{{ '{}'.format(certificate_help_text) }}"
     - name: "help: End play"
-      meta: end_play
+      ansible.builtin.meta: end_play
   vars:
     my_tags: "{{ ansible_run_tags|difference(['all']) }}"
   when: (my_tags|length == 0) or
