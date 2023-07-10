@@ -1,6 +1,6 @@
 # certificate
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/certificate)[![Build Status](https://travis-ci.org/vbotka/ansible-certificate.svg?branch=master)](https://travis-ci.org/vbotka/ansible-certificate)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/certificate)[![Build Status](https://app.travis-ci.com/vbotka/ansible-certificate.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-certificate)
 
 [Ansible role](https://galaxy.ansible.com/vbotka/certificate/). Manage SSL certificates.
 
@@ -136,4 +136,4 @@ shell> ansible-playbook playbook.yml -t certificate_openssl_stat
 
 ## Author Information
 
-[Vladimir Botka](https://botka.link)
+[Vladimir Botka](https://botka.info)
