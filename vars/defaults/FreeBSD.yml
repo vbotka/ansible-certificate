@@ -33,7 +33,7 @@ al_sanity_packages_required:
       - - acme-tiny
 
 # sanity: override supported versions
-al_supported_versions_override: ['11.3', '11.4', '12.0', '12.1', '12.2', '13.0']
+al_supported_versions_override: ['11.3', '11.4', '12.0', '12.1', '12.2', '12.3', '12.4', '13.0', '13.1', '13.2']
 
 # Notes
 #
