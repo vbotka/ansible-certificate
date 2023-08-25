@@ -15,8 +15,8 @@ certificate_group: wheel
 
 # ssl private
 certificate_private_group: wheel
-certificate_private_dir_mode: "0700"
-certificate_private_file_mode: "0600"
+certificate_private_dir_mode: '0700'
+certificate_private_file_mode: '0600'
 
 # acme directories
 certificate_acme_base_dir: /usr/local

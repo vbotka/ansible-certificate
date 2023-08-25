@@ -127,8 +127,8 @@ linux_install_delay: 5
 certificate_dir_csr: "{{ certificate_dir }}/csr"
 certificate_dir_certs: "{{ certificate_dir }}/certs"
 certificate_owner: root
-certificate_dir_mode: "0755"
-certificate_file_mode: "0644"
+certificate_dir_mode: '0755'
+certificate_file_mode: '0644'
 
 # ssl private
 certificate_private_dir: "{{ certificate_dir }}/private"
@@ -148,8 +148,8 @@ certificate_acme_dir_private: "{{ certificate_acme_dir }}/keys"
 certificate_acme_dir_challenges: "/usr/local/www/apache24/data/.well-known/acme-challenge/"
 certificate_acme_owner: root
 certificate_acme_group: wheel
-certificate_acme_dir_mode_private: "0700"
-certificate_acme_dir_mode_public: "0755"
+certificate_acme_dir_mode_private: '0700'
+certificate_acme_dir_mode_public: '0755'
 
 # self-signed certs by openssl command
 certificate_self_signed_command: []

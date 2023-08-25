@@ -2,37 +2,37 @@
 # certificate vars
 
 # certificate_self_signed_command:
-#  - subject: "/C=CZ/ST=Czech/L=Prague/O=IT/CN=example.com"
-#    private: "example.com.key"
-#    crt: "example.com.crt"
-#    days: "3650"
-#    cipher: "rsa:2048"
+#  - subject: '/C=CZ/ST=Czech/L=Prague/O=IT/CN=example.com'
+#    private: example.com.key
+#    crt: example.com.crt
+#    days: 3650
+#    cipher: 'rsa:2048'
 
 # Selfsigned certificate by Ansible modules
 # certificate_data:
-#  - CN: "example.com"
-#    private: "example_com.pem"
-#    csr: "example_com.csr"
-#    crt: "example_com.crt"
+#  - CN: example.com
+#    private: example_com.pem
+#    csr: example_com.csr
+#    crt: example_com.crt
 #    provider: selfsigned
 
 # passphrase and cipher are optional and are required together
 # certificate_data:
-#  - CN: "example.com"
-#    private: "example_com.pem"
-#    csr: "example_com.csr"
-#    crt: "example_com.crt"
-#    passphrase: "passphrase"
-#    cipher: "AES-256-CBC"
+#  - CN: example.com
+#    private: example_com.pem
+#    csr: example_com.csr
+#    crt: example_com.crt
+#    passphrase: passphrase
+#    cipher: AES-256-CBC
 #    provider: selfsigned
 
 # [TODO] ACME not tested yet
 # certificate_data:
-#  - CN: "example.com"
-#    private: "example_com.pem"
-#    csr: "example_com.csr"
-#    crt: "example_com.crt"
-#    challenge: "example.com"
+#  - CN: example.com
+#    private: example_com.pem
+#    csr: example_com.csr
+#    crt: example_com.crt
+#    challenge: example.com
 #    provider: acme
 
 # EOF
