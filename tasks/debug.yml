@@ -82,6 +82,7 @@
       freebsd_flavors_enable: {{ freebsd_flavors_enable }}
       freebsd_flavors: {{ freebsd_flavors|to_yaml }}
       {% endif %}
+      certificate_supported_linux_family: {{ certificate_supported_linux_family }}
       certificate_install: {{ certificate_install }}
       certificate_packages:
         {{ certificate_packages|to_nice_yaml(indent=2)|indent(2) }}

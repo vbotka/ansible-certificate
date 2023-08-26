@@ -6,6 +6,7 @@ certificate_install: true
 certificate_debug: false
 certificate_debug_classified: false
 certificate_backup_conf: false
+certificate_supported_linux_family: ['RedHat', 'Debian']
 
 # help
 certificate_help_text: |
