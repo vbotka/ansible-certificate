@@ -25,10 +25,14 @@ certificate_acme_link_crt: false
 certificate_link_crt: true
 
 # packages test required
-al_sanity_packages_required: {}
+al_sanity_packages_required:
+  Ubuntu:
+    default:
+      - [python-openssl, python-cryptography]
+      - [acme-tiny]
 
 # sanity: override supported versions
-al_supported_versions_override: []
+al_supported_versions_override: [bionic, cosmic, disco, eoan, focal, groovy, hirsute, impish, jammy, kinetic, lunar]
 
 # EOF
 ...
