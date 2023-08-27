@@ -25,7 +25,7 @@
         certificate_packages: "{{ al_bsd_ports_list }}"
   when:
     - freebsd_flavors_enable|bool
-    - ansible_os_family == "FreeBSD"
+    - ansible_os_family == 'FreeBSD'
 
 # EOF
 ...

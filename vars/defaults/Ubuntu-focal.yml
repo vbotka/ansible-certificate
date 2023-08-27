@@ -1,8 +1,10 @@
 ---
-# certificate vars for Debian
+# certificate vars for Ubuntu Bionic
 
 # packages install
 certificate_packages:
+  - python-cryptography
+  - python-openssl
   - python3-cryptography
   - python3-openssl
   - acme-tiny
@@ -23,11 +25,8 @@ certificate_acme_base_dir: ''
 certificate_acme_link_crt: false
 certificate_link_crt: true
 
-# packages test required
-al_sanity_packages_required: {}
-
 # sanity: override supported versions
-al_supported_versions_override: []
+al_supported_versions_override: [bionic, cosmic, disco, eoan, focal, groovy, hirsute, impish, jammy, kinetic, lunar]
 
 # EOF
 ...

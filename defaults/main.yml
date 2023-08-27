@@ -1,11 +1,12 @@
 ---
 
 # certificate defaults
-certificate_role_version: 2.4.0
+certificate_role_version: 2.4.2
 certificate_install: true
 certificate_debug: false
 certificate_debug_classified: false
 certificate_backup_conf: false
+certificate_supported_linux_family: ['RedHat', 'Debian']
 
 # help
 certificate_help_text: |
@@ -127,8 +128,8 @@ linux_install_delay: 5
 certificate_dir_csr: "{{ certificate_dir }}/csr"
 certificate_dir_certs: "{{ certificate_dir }}/certs"
 certificate_owner: root
-certificate_dir_mode: "0755"
-certificate_file_mode: "0644"
+certificate_dir_mode: '0755'
+certificate_file_mode: '0644'
 
 # ssl private
 certificate_private_dir: "{{ certificate_dir }}/private"
@@ -148,8 +149,8 @@ certificate_acme_dir_private: "{{ certificate_acme_dir }}/keys"
 certificate_acme_dir_challenges: "/usr/local/www/apache24/data/.well-known/acme-challenge/"
 certificate_acme_owner: root
 certificate_acme_group: wheel
-certificate_acme_dir_mode_private: "0700"
-certificate_acme_dir_mode_public: "0755"
+certificate_acme_dir_mode_private: '0700'
+certificate_acme_dir_mode_public: '0755'
 
 # self-signed certs by openssl command
 certificate_self_signed_command: []
@@ -172,6 +173,25 @@ al_sanity_platform_warning: true
 al_sanity_ansible_version_fail: true
 al_sanity_ansible_version_end_host: false
 al_sanity_ansible_version_warning: true
+
+# packages test required
+al_sanity_packages_required:
+  Ubuntu:
+    default: [python3-openssl, python3-cryptography, acme-tiny]
+    bionic: [python-openssl, python-cryptography, acme-tiny]
+    cosmic: [python-openssl, python-cryptography, acme-tiny]
+    disco: [python-openssl, python-cryptography, acme-tiny]
+    eoan: [python-openssl, python-cryptography, acme-tiny]
+    focal:
+      - [python-openssl, python3-openssl]
+      - [python-cryptography, python3-cryptography]
+      - acme-tiny
+  FreeBSD:
+    default:
+      - "py{{ certificate_python_version }}-cryptography"
+      - "py{{ certificate_python_version }}-openssl"
+      - "py{{ certificate_python_version }}-acme"
+      - acme-tiny
 
 # EOF
 ...
