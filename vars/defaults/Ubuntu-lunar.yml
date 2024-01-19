@@ -1,5 +1,5 @@
 ---
-# certificate vars for Ubuntu Focal
+# certificate vars for Ubuntu Lunar
 
 # packages install
 certificate_packages:

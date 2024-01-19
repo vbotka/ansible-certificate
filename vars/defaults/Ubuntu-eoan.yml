@@ -1,5 +1,5 @@
 ---
-# certificate vars for Ubuntu Bionic
+# certificate vars for Ubuntu Eoan
 
 # packages install
 certificate_packages:
