@@ -1,5 +1,5 @@
 ---
-# certificate vars for Ubuntu Focal
+# certificate vars for Ubuntu Mantic
 
 # packages install
 certificate_packages:

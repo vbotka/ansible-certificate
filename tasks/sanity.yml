@@ -1,14 +1,17 @@
 ---
 
-- name: "sanity: Get meta-data and role_name."
+- name: Get meta-data and role_name
   block:
+
     - name: "sanity: Get meta-data."
       ansible.builtin.include_vars:
         file: meta/main.yml
       when: galaxy_info is undefined
+
     - name: "sanity: Get role_name."
       ansible.builtin.set_fact:
         al_sanity_role_name: "{{ role_name }}"
+
   when: certificate_sanity_platform|bool or
         certificate_sanity_ansible_version|bool
 
