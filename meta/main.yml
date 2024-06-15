@@ -11,10 +11,9 @@ galaxy_info:
   platforms:
     - name: FreeBSD
       versions:
-        - 12.4
-        - 13.2
         - 13.3
         - 14.0
+        - 14.1
     - name: Ubuntu
       versions:
         - focal
