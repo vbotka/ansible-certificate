@@ -10,7 +10,7 @@ vbotka.certificate 2.6 Release Notes
 
 Release Summary
 ---------------
-Maintenance and bugfix updatel.
+Ansible 2.17 update
 
 Major Changes
 -------------
@@ -21,12 +21,6 @@ Minor Changes
 * Update README
 * Update lint config
 
-Bugfixes
---------
-
-Breaking Changes / Porting Guide
---------------------------------
-
 
 2.6.0
 =====
@@ -34,3 +28,9 @@ Breaking Changes / Porting Guide
 Release Summary
 ---------------
 Ansible 2.16 update
+
+Bugfixes
+--------
+
+Breaking Changes / Porting Guide
+--------------------------------
