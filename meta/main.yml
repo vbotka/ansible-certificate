@@ -20,6 +20,7 @@ galaxy_info:
         - jammy
         - lunar
         - mantic
+        - noble
   galaxy_tags:
     - freebsd
     - ubuntu

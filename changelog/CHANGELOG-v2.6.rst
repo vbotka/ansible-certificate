@@ -14,7 +14,7 @@ Ansible 2.17 update
 
 Major Changes
 -------------
-* Add support of FreeBSD 14.1
+* Add support of FreeBSD 14.1, Ubuntu Noble
 
 Minor Changes
 -------------
