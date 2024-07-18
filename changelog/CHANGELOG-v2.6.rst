@@ -5,7 +5,15 @@ vbotka.certificate 2.6 Release Notes
 .. contents:: Topics
 
 
-2.6.1
+2.6.3
+=====
+
+Release Summary
+---------------
+Sync var certificate_role_version
+
+
+2.6.2
 =====
 
 Release Summary
