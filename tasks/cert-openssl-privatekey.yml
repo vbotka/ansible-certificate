@@ -1,38 +1,36 @@
 ---
-
-- name: "cert-openssl-privatekey: Generate OpenSSL private keys."
+- name: "Cert-openssl-privatekey: Generate OpenSSL private keys."
   community.crypto.openssl_privatekey:
-    attributes: "{{ item.attributes|default(omit) }}"
-    backup: "{{ item.backup|default(certificate_backup_conf) }}"
-    cipher: "{{ item.cipher | default(omit) }}"
-    curve: "{{ item.curve|default(omit) }}"
-    force: "{{ item.force|default(omit) }}"  # default: false
-    group: "{{ item.group|default(certificate_private_group) }}"
-    mode: "{{ item.mode|default(certificate_private_file_mode) }}"
-    owner: "{{ item.owner|default(certificate_private_owner) }}"
-    passphrase: "{{ item.passphrase | default(omit) }}"
+    attributes: "{{ item.attributes | d(omit) }}"
+    backup: "{{ item.backup | d(certificate_backup_conf) }}"
+    cipher: "{{ item.cipher | d(omit) }}"
+    curve: "{{ item.curve | d(omit) }}"
+    force: "{{ item.force | d(omit) }}" # default: false
+    group: "{{ item.group | d(certificate_private_group) }}"
+    mode: "{{ item.mode | d(certificate_private_file_mode) }}"
+    owner: "{{ item.owner | d(certificate_private_owner) }}"
+    passphrase: "{{ item.passphrase | d(omit) }}"
     path: "{{ certificate_private_dir }}/{{ item.private }}"
-    select_crypto_backend: "{{ item.backend|default(certificate_default_backend) }}"
-    selevel: "{{ item.selevel|default(omit) }}"
-    serole: "{{ item.serole|default(omit) }}"
-    setype: "{{ item.setype|default(omit) }}"
-    seuser: "{{ item.seuser|default(omit) }}"
-    size: "{{ item.size|default(certificate_default_size) }}"
-    state: "{{ item.state|default(omit) }}"  # default: present
-    type: "{{ item.type|default(certificate_default_type) }}"
-    unsafe_writes: "{{ item.unsafe_writes|default(omit) }}"  # default: false
+    select_crypto_backend: "{{ item.backend | d(certificate_default_backend) }}"
+    selevel: "{{ item.selevel | d(omit) }}"
+    serole: "{{ item.serole | d(omit) }}"
+    setype: "{{ item.setype | d(omit) }}"
+    seuser: "{{ item.seuser | d(omit) }}"
+    size: "{{ item.size | d(certificate_default_size) }}"
+    state: "{{ item.state | d(omit) }}" # default: present
+    type: "{{ item.type | d(certificate_default_type) }}"
+    unsafe_writes: "{{ item.unsafe_writes | d(omit) }}" # default: false
   register: certificate_result_privatekey
   loop: "{{ certificate_data }}"
   loop_control:
-    label: "file:{{ certificate_private_dir }}/{{ item.private }} CN:{{ item.CN|default('UNDEFINED') }}"
+    label: file:{{ certificate_private_dir }}/{{ item.private }} CN:{{ item.CN | d('UNDEFINED') }}
   when: not ansible_check_mode
 
-- name: "cert-openssl-privatekey: Display information on OpenSSL private keys."
+- name: "Cert-openssl-privatekey: Display information on OpenSSL private keys."
   ansible.builtin.debug:
     var: certificate_result_privatekey
   when:
-    - certificate_debug_classified|bool
+    - certificate_debug_classified | bool
     - certificate_result_privatekey is defined
 
 # EOF
-...

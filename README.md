@@ -1,6 +1,8 @@
 # certificate
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/certificate)[![Build Status](https://app.travis-ci.com/vbotka/ansible-certificate.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-certificate)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/certificate)
+[![Build Status](https://app.travis-ci.com/vbotka/ansible-certificate.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-certificate)
+[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-certificate)](https://github.com/vbotka/ansible-certificate/tags)
 
 [Ansible role](https://galaxy.ansible.com/vbotka/certificate/). Manage SSL certificates.
 
@@ -115,6 +117,17 @@ shell> ansible-playbook playbook.yml -t certificate_openssl_certificate_info
 
 ```sh
 shell> ansible-playbook playbook.yml -t certificate_openssl_stat
+```
+
+
+## Ansible lint
+
+Use the configuration file *.ansible-lint.local* when running
+*ansible-lint*. Some rules might be disabled and some warnings might
+be ignored. See the notes in the configuration file.
+
+```bash
+shell> ansible-lint -c .ansible-lint.local
 ```
 
 

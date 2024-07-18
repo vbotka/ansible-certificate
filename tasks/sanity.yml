@@ -1,37 +1,33 @@
 ---
-
 - name: Get meta-data and role_name
+  when: certificate_sanity_platform | bool or certificate_sanity_ansible_version | bool
   block:
 
-    - name: "sanity: Get meta-data."
+    - name: "Sanity: Get meta-data."
       ansible.builtin.include_vars:
         file: meta/main.yml
       when: galaxy_info is undefined
 
-    - name: "sanity: Get role_name."
+    - name: "Sanity: Get role_name."
       ansible.builtin.set_fact:
         al_sanity_role_name: "{{ role_name }}"
 
-  when: certificate_sanity_platform|bool or
-        certificate_sanity_ansible_version|bool
-
-- name: "sanity: Include vbotka.ansible_lib al_sanity_platform."
+- name: "Sanity: Include vbotka.ansible_lib al_sanity_platform."
   ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_sanity_platform
-  when: certificate_sanity_platform|bool
+  when: certificate_sanity_platform | bool
 
-- name: "sanity: Include vbotka.ansible_lib al_sanity_ansible_version."
+- name: "Sanity: Include vbotka.ansible_lib al_sanity_ansible_version."
   ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_sanity_ansible_version
-  when: certificate_sanity_ansible_version|bool
+  when: certificate_sanity_ansible_version | bool
 
-- name: "sanity: Include vbotka.ansible_lib al_sanity_packages."
+- name: "Sanity: Include vbotka.ansible_lib al_sanity_packages."
   ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_sanity_packages
-  when: certificate_sanity_packages|bool
+  when: certificate_sanity_packages | bool
 
 # EOF
-...

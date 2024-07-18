@@ -8,26 +8,16 @@ certificate_packages:
   - acme-tiny
 
 certificate_packages2: []
-
 # ssl directories
 certificate_dir: /etc/ssl
 certificate_group: root
 
 # ssl private
 certificate_private_group: ssl-cert
-certificate_private_dir_mode: '0710'
-certificate_private_file_mode: '0600'
+certificate_private_dir_mode: "0710"
+certificate_private_file_mode: "0600"
 
 # acme directories
-certificate_acme_base_dir: ''
+certificate_acme_base_dir: ""
 certificate_acme_link_crt: false
 certificate_link_crt: true
-
-# packages test required
-al_sanity_packages_required: {}
-
-# sanity: override supported versions
-al_supported_versions_override: []
-
-# EOF
-...

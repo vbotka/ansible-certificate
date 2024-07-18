@@ -1,13 +1,12 @@
 ---
 
 # certificate defaults
-certificate_role_version: 2.5.0
+certificate_role_version: 2.6.1.
 certificate_install: true
 certificate_debug: false
 certificate_debug_classified: false
 certificate_backup_conf: false
-certificate_supported_linux_family: ['RedHat', 'Debian']
-
+certificate_supported_linux_family: [RedHat, Debian]
 # help
 certificate_help_text: |
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -86,23 +85,23 @@ certificate_help_text: |
 
 certificate_known_tags:
   - certificate_command
+  - certificate_debug
+  - certificate_dirs
   - certificate_openssl
-  - certificate_openssl_privatekey
-  - certificate_openssl_privatekey_info
-  - certificate_openssl_csr
-  - certificate_openssl_csr_info
   - certificate_openssl_certificate
   - certificate_openssl_certificate_info
+  - certificate_openssl_csr
+  - certificate_openssl_csr_info
+  - certificate_openssl_privatekey
+  - certificate_openssl_privatekey_info
   - certificate_openssl_stat
-  - certificate_vars
-  - certificate_debug
   - certificate_packages
   - certificate_sanity
-  - certificate_dirs
   - certificate_setup
+  - certificate_vars
 
 # Python
-certificate_python_version: "{{ ansible_python_version.split('.')[0:2]|join() }}"
+certificate_python_version: "{{ ansible_python_version.split('.')[0:2] | join() }}"
 
 # sanity
 certificate_sanity: true
@@ -114,12 +113,12 @@ certificate_sanity_packages: true
 freebsd_install_method: packages
 # freebsd_install_method: ports
 freebsd_use_packages: true
+freebsd_install_state: present
 freebsd_install_retries: 10
 freebsd_install_delay: 5
 freebsd_flavors_enable: false
 freebsd_flavor_python: "{{ 'py' ~ certificate_python_version }}"
 freebsd_flavors: ["{{ freebsd_flavor_python }}"]
-
 # Linux
 linux_install_retries: 10
 linux_install_delay: 5
@@ -128,8 +127,8 @@ linux_install_delay: 5
 certificate_dir_csr: "{{ certificate_dir }}/csr"
 certificate_dir_certs: "{{ certificate_dir }}/certs"
 certificate_owner: root
-certificate_dir_mode: '0755'
-certificate_file_mode: '0644'
+certificate_dir_mode: "0755"
+certificate_file_mode: "0644"
 
 # ssl private
 certificate_private_dir: "{{ certificate_dir }}/private"
@@ -146,15 +145,14 @@ certificate_acme_dir: "{{ certificate_acme_base_dir }}/etc/letsencrypt"
 certificate_acme_dir_csr: "{{ certificate_acme_dir }}/csr"
 certificate_acme_dir_certs: "{{ certificate_acme_dir }}/archive"
 certificate_acme_dir_private: "{{ certificate_acme_dir }}/keys"
-certificate_acme_dir_challenges: "/usr/local/www/apache24/data/.well-known/acme-challenge/"
+certificate_acme_dir_challenges: /usr/local/www/apache24/data/.well-known/acme-challenge/
 certificate_acme_owner: root
 certificate_acme_group: wheel
-certificate_acme_dir_mode_private: '0700'
-certificate_acme_dir_mode_public: '0755'
+certificate_acme_dir_mode_private: "0700"
+certificate_acme_dir_mode_public: "0755"
 
 # self-signed certs by openssl command
 certificate_self_signed_command: []
-
 # certs by openssl_certificate module
 certificate_data: []
 
@@ -188,10 +186,9 @@ al_sanity_packages_required:
       - acme-tiny
   FreeBSD:
     default:
-      - "py{{ certificate_python_version }}-cryptography"
-      - "py{{ certificate_python_version }}-openssl"
-      - "py{{ certificate_python_version }}-acme"
+      - py{{ certificate_python_version }}-cryptography
+      - py{{ certificate_python_version }}-openssl
+      - py{{ certificate_python_version }}-acme
       - acme-tiny
 
 # EOF
-...
