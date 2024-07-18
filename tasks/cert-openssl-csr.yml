@@ -1,61 +1,59 @@
 ---
-
-- name: "cert-openssl-csr: Generate OpenSSL Certificate Signing Request."
+- name: "Cert-openssl-csr: Generate OpenSSL Certificate Signing Request."
   community.crypto.openssl_csr:
-    attributes: "{{ item.attributes|default(omit) }}"
-    authority_cert_issuer: "{{ item.issuer|default(omit) }}"
-    authority_cert_serial_number: "{{ item.serial_number|default(omit) }}"
-    authority_key_identifier: "{{ item.key_identifier|default(omit) }}"
-    backup: "{{ item.backup|default(certificate_backup_conf) }}"
-    basic_constraints: "{{ item.basic_constraints|default(omit) }}"
-    basic_constraints_critical: "{{ item.basic_constraints_critical|default(omit) }}"
+    attributes: "{{ item.attributes | d(omit) }}"
+    authority_cert_issuer: "{{ item.issuer | d(omit) }}"
+    authority_cert_serial_number: "{{ item.serial_number | d(omit) }}"
+    authority_key_identifier: "{{ item.key_identifier | d(omit) }}"
+    backup: "{{ item.backup | d(certificate_backup_conf) }}"
+    basic_constraints: "{{ item.basic_constraints | d(omit) }}"
+    basic_constraints_critical: "{{ item.basic_constraints_critical | d(omit) }}"
     common_name: "{{ item.CN }}"
-    country_name: "{{ item.country_name|default(omit) }}"
-    create_subject_key_identifier: "{{ item.create_subject_key_identifier|default(omit) }}"
-    digest: "{{ item.digest|default(omit) }}"
-    email_address: "{{ item.email_address|default(omit) }}"
-    extended_key_usage: "{{ item.extended_key_usage|default(omit) }}"
-    extended_key_usage_critical: "{{ item.extended_key_usage_critical|default(omit) }}"
-    force: "{{ item.force|default(omit) }}"
-    group: "{{ item.group|default(certificate_group) }}"
-    key_usage: "{{ item.key_usage|default(omit) }}"
-    key_usage_critical: "{{ item.key_usage_critical|default(omit) }}"
-    locality_name: "{{ item.locality_name|default(omit) }}"
-    mode: "{{ item.mode|default(certificate_file_mode) }}"
-    ocsp_must_staple: "{{ item.ocsp_must_staple|default(omit) }}"
-    ocsp_must_staple_critical: "{{ item.ocsp_must_staple_critical|default(omit) }}"
-    organization_name: "{{ item.organization_name|default(omit) }}"
-    organizational_unit_name: "{{ item.organizational_unit_name|default(omit) }}"
-    owner: "{{ item.owner|default(certificate_owner) }}"
+    country_name: "{{ item.country_name | d(omit) }}"
+    create_subject_key_identifier: "{{ item.create_subject_key_identifier | d(omit) }}"
+    digest: "{{ item.digest | d(omit) }}"
+    email_address: "{{ item.email_address | d(omit) }}"
+    extended_key_usage: "{{ item.extended_key_usage | d(omit) }}"
+    extended_key_usage_critical: "{{ item.extended_key_usage_critical | d(omit) }}"
+    force: "{{ item.force | d(omit) }}"
+    group: "{{ item.group | d(certificate_group) }}"
+    key_usage: "{{ item.key_usage | d(omit) }}"
+    key_usage_critical: "{{ item.key_usage_critical | d(omit) }}"
+    locality_name: "{{ item.locality_name | d(omit) }}"
+    mode: "{{ item.mode | d(certificate_file_mode) }}"
+    ocsp_must_staple: "{{ item.ocsp_must_staple | d(omit) }}"
+    ocsp_must_staple_critical: "{{ item.ocsp_must_staple_critical | d(omit) }}"
+    organization_name: "{{ item.organization_name | d(omit) }}"
+    organizational_unit_name: "{{ item.organizational_unit_name | d(omit) }}"
+    owner: "{{ item.owner | d(certificate_owner) }}"
     path: "{{ certificate_dir_csr }}/{{ item.csr }}"
-    privatekey_passphrase: "{{ item.passphrase |default(omit) }}"
+    privatekey_passphrase: "{{ item.passphrase | d(omit) }}"
     privatekey_path: "{{ certificate_private_dir }}/{{ item.private }}"
-    select_crypto_backend: "{{ item.backend|default(certificate_default_backend) }}"
-    selevel: "{{ item.selevel|default(omit) }}"
-    serole: "{{ item.serole|default(omit) }}"
-    setype: "{{ item.setype|default(omit) }}"
-    seuser: "{{ item.seuser|default(omit) }}"
-    state: "{{ item.state|default(omit) }}"  # default: present
-    state_or_province_name: "{{ item.state_or_province_name|default(omit) }}"
-    subject: "{{ item.subject|default(omit) }}"
-    subject_alt_name: "{{ item.subject_alt_name|default(omit) }}"
-    subject_alt_name_critical: "{{ item.subject_alt_name_critical|default(omit) }}"
-    subject_key_identifier: "{{ item.subject_key_identifier|default(omit) }}"
-    unsafe_writes: "{{ item.unsafe_writes|default(omit) }}"  # default: false
-    use_common_name_for_san: "{{ item.use_common_name_for_san|default(omit) }}"  # default: true
-    version: "{{ item.version_csr|default(omit) }}"  # The only allowed value according to RFC 2986 is 1
+    select_crypto_backend: "{{ item.backend | d(certificate_default_backend) }}"
+    selevel: "{{ item.selevel | d(omit) }}"
+    serole: "{{ item.serole | d(omit) }}"
+    setype: "{{ item.setype | d(omit) }}"
+    seuser: "{{ item.seuser | d(omit) }}"
+    state: "{{ item.state | d(omit) }}" # default: present
+    state_or_province_name: "{{ item.state_or_province_name | d(omit) }}"
+    subject: "{{ item.subject | d(omit) }}"
+    subject_alt_name: "{{ item.subject_alt_name | d(omit) }}"
+    subject_alt_name_critical: "{{ item.subject_alt_name_critical | d(omit) }}"
+    subject_key_identifier: "{{ item.subject_key_identifier | d(omit) }}"
+    unsafe_writes: "{{ item.unsafe_writes | d(omit) }}" # default: false
+    use_common_name_for_san: "{{ item.use_common_name_for_san | d(omit) }}" # default: true
+    version: "{{ item.version_csr | d(omit) }}" # The only allowed value according to RFC 2986 is 1
   register: certificate_result_csr
   loop: "{{ certificate_data }}"
   loop_control:
-    label: " file:{{ certificate_dir_csr }}/{{ item.csr }} CN:{{ item.CN|default('UNDEFINED') }}"
+    label: " file:{{ certificate_dir_csr }}/{{ item.csr }} CN:{{ item.CN | d('UNDEFINED') }}"
   when: not ansible_check_mode
 
-- name: "cert-openssl-csr: Display information on OpenSSL Certificate Signing Requests (CSR)."
+- name: "Cert-openssl-csr: Display information on OpenSSL Certificate Signing Requests (CSR)."
   ansible.builtin.debug:
     var: certificate_result_csr
   when:
-    - certificate_debug_classified|bool
+    - certificate_debug_classified | bool
     - certificate_result_csr is defined
 
 # EOF
-...

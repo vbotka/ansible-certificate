@@ -18,8 +18,15 @@ Major Changes
 
 Minor Changes
 -------------
+* Add variable freebsd_install_state default=present
 * Update README
 * Update lint config
+* Fix lint
+
+Breaking Changes / Porting Guide
+--------------------------------
+* al_include_os_vars_path changed to incremental
+  al_include_os_vars_path_incr. Updated vars/defaults
 
 
 2.6.0

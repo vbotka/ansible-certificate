@@ -11,12 +11,12 @@
 
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
-  when: certificate_debug|bool
+  when: certificate_debug | bool
   tags: certificate_debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml
-  when: certificate_install|bool
+  when: certificate_install | bool
   tags: [certificate_packages, certificate_setup]
 
 - name: Import cert-dirs.yml
@@ -25,7 +25,7 @@
 
 - name: Import sanity.yml
   ansible.builtin.import_tasks: sanity.yml
-  when: certificate_sanity|bool
+  when: certificate_sanity | bool
   tags: [certificate_sanity, certificate_setup]
 
 - name: Import cert-command.yml
@@ -61,4 +61,3 @@
   tags: certificate_openssl_stat
 
 # EOF
-...

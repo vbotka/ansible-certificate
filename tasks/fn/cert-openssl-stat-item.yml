@@ -1,6 +1,5 @@
 ---
-
-- name: "cert-openssl-stat-item: Get status of OpenSSL private key, CSR, and certificate."
+- name: "Cert-openssl-stat-item: Get status of OpenSSL private key, CSR, and certificate."
   ansible.builtin.stat:
     path: "{{ item }}"
   register: certificate_result_stat
@@ -9,13 +8,10 @@
     - "{{ certificate_dir_csr }}/{{ outer_item.csr }}"
     - "{{ certificate_dir_certs }}/{{ outer_item.crt }}"
 
-- name: "cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate."
+- name: "Cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate."
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   vars:
-    msg: "{{ certificate_result_stat.results|
-             json_query('[].{file: item, exists: stat.exists}')|
-             to_yaml }}"
+    msg: "{{ certificate_result_stat.results | json_query('[].{file: item, exists: stat.exists}') | to_yaml }}"
 
 # EOF
-...

@@ -1,38 +1,90 @@
 ---
-
-# FreeBSD
-- name: "packages: Install packages FreeBSD"
-  community.general.pkgng:
-    name: "{{ certificate_packages + certificate_packages2 }}"
-  register: result
-  retries: "{{ freebsd_install_retries }}"
-  until: result is succeeded
-  delay: "{{ freebsd_install_delay }}"
+- name: FreeBSD packages
   when:
     - ansible_os_family == 'FreeBSD'
-    - freebsd_install_method|lower == 'packages'
+    - freebsd_install_method | lower == 'packages'
+  block:
 
-- name: "packages: Install ports FreeBSD"
-  community.general.portinstall:
-    name: "{{ item }}"
-  register: result
-  retries: "{{ freebsd_install_retries }}"
-  until: result is succeeded
-  delay: "{{ freebsd_install_delay }}"
-  loop: "{{ certificate_packages + certificate_packages2 }}"
+    - name: "Packages: Install FreeBSD packages"
+      community.general.pkgng:
+        name: "{{ item }}"
+        state: "{{ freebsd_install_state }}"
+      loop: "{{ certificate_packages + certificate_packages2 }}"
+      register: result
+      until: result is succeeded
+      retries: "{{ freebsd_install_retries }}"
+      delay: "{{ freebsd_install_delay }}"
+
+    - name: "Packages: Debug FreeBSD packages certificate_debug={{ certificate_debug }}"
+      ansible.builtin.debug:
+        var: result
+      when: certificate_debug | bool
+
+  rescue:
+    - name: "Packages: Rescue FreeBSD packages"
+      ansible.builtin.fail:
+        msg: |
+          [ERR] task {{ ansible_failed_task.name }} failed.
+          ansible_failed_task:
+            {{ ansible_failed_task | to_yaml(indent=2) | indent(2) }}
+          ansible_failed_result:
+            {{ ansible_failed_result | to_yaml(indent=2) | indent(2) }}
+
+- name: FreeBSD ports
   when:
     - ansible_os_family == 'FreeBSD'
-    - freebsd_install_method|lower == 'ports'
+    - freebsd_install_method | lower == 'ports'
+  block:
 
-# Linux
-- name: "packages: Install packages Linux"
-  ansible.builtin.package:
-    name: "{{ certificate_packages + certificate_packages2 }}"
-  register: result
-  retries: "{{ linux_install_retries }}"
-  until: result is succeeded
-  delay: "{{ linux_install_delay }}"
+    - name: "Packages: Install FreeBSD ports"
+      community.general.portinstall:
+        name: "{{ item }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+      loop: "{{ certificate_packages + certificate_packages2 }}"
+
+    - name: "Packages: Debug FreeBSD ports certificate_debug={{ certificate_debug }}"
+      ansible.builtin.debug:
+        var: result
+      when: certificate_debug | bool
+
+  rescue:
+    - name: "Packages: Rescue FreeBSD ports"
+      ansible.builtin.fail:
+        msg: |
+          [ERR] task {{ ansible_failed_task.name }} failed.
+          ansible_failed_task:
+            {{ ansible_failed_task | to_yaml(indent=2) | indent(2) }}
+          ansible_failed_result:
+            {{ ansible_failed_result | to_yaml(indent=2) | indent(2) }}
+
+- name: Linux packages
   when: ansible_os_family in certificate_supported_linux_family
+  block:
+
+    - name: "Packages: Install Linux packages"
+      ansible.builtin.package:
+        name: "{{ certificate_packages + certificate_packages2 }}"
+      register: result
+      until: result is succeeded
+      retries: "{{ linux_install_retries }}"
+      delay: "{{ linux_install_delay }}"
+
+    - name: "Packages: Debug Linux packages certificate_debug={{ certificate_debug }}"
+      ansible.builtin.debug:
+        var: result
+      when: certificate_debug | bool
+
+  rescue:
+    - name: "Packages: Rescue Linux packages"
+      ansible.builtin.fail:
+        msg: |
+          [ERR] task {{ ansible_failed_task.name }} failed.
+          ansible_failed_task:
+            {{ ansible_failed_task | to_yaml(indent=2) | indent(2) }}
+          ansible_failed_result:
+            {{ ansible_failed_result | to_yaml(indent=2) | indent(2) }}
 
 # EOF
-...

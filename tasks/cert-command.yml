@@ -1,6 +1,5 @@
 ---
-
-- name: "cert-command: Generate a Self Signed OpenSSL certificate."
+- name: "Cert-command: Generate a Self Signed OpenSSL certificate."
   ansible.builtin.command:
     cmd: >
       openssl req -nodes -x509
@@ -13,7 +12,7 @@
     creates: "{{ certificate_dir_certs }}/{{ item.crt }}"
   loop: "{{ certificate_self_signed_command }}"
 
-- name: "cert-command: Set permisions of private keys."
+- name: "Cert-command: Set permisions of private keys."
   ansible.builtin.file:
     path: "{{ certificate_dir_private }}/{{ item.private }}"
     owner: "{{ certificate_dir_private_owner }}"
@@ -22,4 +21,3 @@
   loop: "{{ certificate_self_signed_command }}"
 
 # EOF
-...

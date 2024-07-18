@@ -1,6 +1,5 @@
 ---
-
-- name: Debug
+- name: "Debug certificate_debug={{ certificate_debug }}"
   vars:
     msg: |-
       ansible_architecture: {{ ansible_architecture }}
@@ -52,14 +51,14 @@
       certificate_link_crt: {{ certificate_link_crt }}
 
       certificate_self_signed_command:
-        {{ certificate_self_signed_command|to_nice_yaml(indent=2)|indent(2) }}
+        {{ certificate_self_signed_command | to_nice_yaml(indent=2) | indent(2) }}
       certificate_data:
-      {% if certificate_debug_classified|bool %}
-        {{ certificate_data|to_nice_yaml(indent=2)|indent(2) }}
+      {% if certificate_debug_classified | bool %}
+        {{ certificate_data | to_nice_yaml(indent=2) | indent(2) }}
       {% else %}
       {% for cert in certificate_data %}
         - passphrase: ************
-      {% for k,v in cert.items() %}
+      {% for k, v in cert.items() %}
       {% if k not in ['passphrase'] %}
           {{ k }}: {{ v }}
       {% endif %}
@@ -69,7 +68,7 @@
       certificate_python_version: {{ certificate_python_version }}
       al_debug: {{ al_debug }}
       al_sanity_packages_required:
-        {{ al_sanity_packages_required|to_yaml(indent=2)|indent(2) }}
+        {{ al_sanity_packages_required | to_yaml(indent=2) | indent(2) }}
       {% if ansible_os_family in ['Debian'] %}
       linux_install_retries: {{ linux_install_retries }}
       linux_install_delay: {{ linux_install_delay }}
@@ -77,19 +76,19 @@
       {% if ansible_os_family in ['FreeBSD'] %}
       freebsd_install_method: {{ freebsd_install_method }}
       freebsd_use_packages: {{ freebsd_use_packages }}
+      freebsd_install_state: {{ freebsd_install_state }}
       freebsd_install_retries: {{ freebsd_install_retries }}
       freebsd_install_delay: {{ freebsd_install_delay }}
       freebsd_flavors_enable: {{ freebsd_flavors_enable }}
-      freebsd_flavors: {{ freebsd_flavors|to_yaml }}
+      freebsd_flavors: {{ freebsd_flavors | to_yaml }}
       {% endif %}
       certificate_supported_linux_family: {{ certificate_supported_linux_family }}
       certificate_install: {{ certificate_install }}
       certificate_packages:
-        {{ certificate_packages|to_nice_yaml(indent=2)|indent(2) }}
+        {{ certificate_packages | to_nice_yaml(indent=2) | indent(2) }}
       certificate_packages2:
-        {{ certificate_packages2|to_nice_yaml(indent=2)|indent(2) }}
+        {{ certificate_packages2 | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
 # EOF
-...

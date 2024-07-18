@@ -1,16 +1,14 @@
 ---
+- name: Help
+  vars:
+    my_tags: "{{ ansible_run_tags | difference(['all']) }}"
+  when: (my_tags | length == 0) or (my_tags | intersect(certificate_known_tags) | length == 0)
 
-- name: "help: Block"
   block:
-    - name: "help: Help"
+    - name: "Help: Help"
       ansible.builtin.debug:
         msg: "{{ '{}'.format(certificate_help_text) }}"
-    - name: "help: End play"
+    - name: "Help: End play"
       ansible.builtin.meta: end_play
-  vars:
-    my_tags: "{{ ansible_run_tags|difference(['all']) }}"
-  when: (my_tags|length == 0) or
-        (my_tags|intersect(certificate_known_tags)|length == 0)
 
 # EOF
-...
