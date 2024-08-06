@@ -63,7 +63,7 @@ This variable enables the testing of the packages installed. By default the flav
 
 - Create playbook
 
-```sh
+```yaml
 shell> cat playbook.yml
 - hosts: srv.example.com
   roles:
@@ -79,9 +79,9 @@ shell> ansible-playbook playbook.yml
 - Run setup tasks
 
 ```sh
-shell> ansible-playbook playbook.yml -t certificate_debug
-shell> ansible-playbook playbook.yml -t certificate_packages
-shell> ansible-playbook playbook.yml -t certificate_sanity
+shell> ansible-playbook playbook.yml -t certificate_debug -e certificate_debug=true
+shell> ansible-playbook playbook.yml -t certificate_pkg -e certificate_install=true
+shell> ansible-playbook playbook.yml -t certificate_sanity -e al_debug=true
 shell> ansible-playbook playbook.yml -t certificate_dirs
 ```
 

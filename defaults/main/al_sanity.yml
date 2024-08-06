@@ -1,0 +1,35 @@
+---
+# Ansible Library. Variables for included tasks.
+al_debug: false
+
+# Ansible Library. Variables for al_sanity_platform
+al_sanity_platform_gather_subset: true
+al_sanity_platform_fail: true
+al_sanity_platform_version_fail: true
+al_sanity_platform_end_host: false
+al_sanity_platform_version_end_host: false
+al_sanity_platform_warning: true
+
+# Ansible Library. Variables for al_sanity_ansible_version
+al_sanity_ansible_version_fail: true
+al_sanity_ansible_version_end_host: false
+al_sanity_ansible_version_warning: true
+
+# Required packages
+al_sanity_packages_required:
+  Ubuntu:
+    default: [python3-openssl, python3-cryptography, acme-tiny]
+    bionic: [python-openssl, python-cryptography, acme-tiny]
+    cosmic: [python-openssl, python-cryptography, acme-tiny]
+    disco: [python-openssl, python-cryptography, acme-tiny]
+    eoan: [python-openssl, python-cryptography, acme-tiny]
+    focal:
+      - [python-openssl, python3-openssl]
+      - [python-cryptography, python3-cryptography]
+      - acme-tiny
+  FreeBSD:
+    default:
+      - py{{ certificate_python_version }}-cryptography
+      - py{{ certificate_python_version }}-openssl
+      - py{{ certificate_python_version }}-acme
+      - acme-tiny

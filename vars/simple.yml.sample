@@ -1,0 +1,11 @@
+---
+# certificate vars
+
+certificate_dir: /usr/local/etc/ssl
+certificate_data_simple:
+  - www.example.com
+  - mail.example.com
+  - sql.example.com
+
+# EOF
+...

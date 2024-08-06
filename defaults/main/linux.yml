@@ -1,0 +1,3 @@
+---
+linux_install_retries: 10
+linux_install_delay: 5

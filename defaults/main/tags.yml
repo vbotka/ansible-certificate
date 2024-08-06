@@ -1,0 +1,17 @@
+---
+certificate_known_tags:
+  - certificate_command
+  - certificate_debug
+  - certificate_dirs
+  - certificate_openssl
+  - certificate_openssl_certificate
+  - certificate_openssl_certificate_info
+  - certificate_openssl_csr
+  - certificate_openssl_csr_info
+  - certificate_openssl_privatekey
+  - certificate_openssl_privatekey_info
+  - certificate_openssl_stat
+  - certificate_pkg
+  - certificate_sanity
+  - certificate_setup
+  - certificate_vars

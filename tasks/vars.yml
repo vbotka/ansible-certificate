@@ -31,4 +31,20 @@
       ansible.builtin.set_fact:
         certificate_packages: "{{ al_bsd_ports_list }}"
 
+- name: Add certificate_data_simple to certificate_data
+  when: certificate_data_simple | length > 0
+  block:
+
+    - name: "Vars: Add certificate_data_simple to certificate_data"
+      ansible.builtin.set_fact:
+        certificate_data: "{{ certificate_data + _data | from_yaml }}"
+      vars:
+        _data: |
+          [{% for name in certificate_data_simple %}
+          { CN: {{ name }},
+          {% for k, v in certificate_data_simple_scheme.items() %}
+          {{ k }}: {{ name }}.{{ v }},
+          {% endfor %} },
+          {% endfor %}]
+
 # EOF

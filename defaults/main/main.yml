@@ -1,0 +1,48 @@
+---
+# certificate defaults
+
+certificate_role_version: 2.6.4.
+certificate_install: true
+certificate_debug: false
+certificate_debug_classified: false
+certificate_backup_conf: false
+certificate_supported_linux_family: [RedHat, Debian]
+
+# Python
+certificate_python_version: "{{ ansible_python_version.split('.')[0:2] | join() }}"
+
+# sanity
+certificate_sanity: true
+certificate_sanity_platform: true
+certificate_sanity_ansible_version: true
+certificate_sanity_packages: true
+
+# ssl directories
+certificate_dir_csr: "{{ certificate_dir }}/csr"
+certificate_dir_certs: "{{ certificate_dir }}/certs"
+certificate_owner: root
+certificate_dir_mode: "0755"
+certificate_file_mode: "0644"
+
+# ssl private
+certificate_private_dir: "{{ certificate_dir }}/private"
+certificate_private_owner: root
+
+# certificate default parameters
+certificate_default_backend: auto
+certificate_default_size: 4096
+certificate_default_type: RSA
+certificate_default_provider: selfsigned
+
+# self-signed certs by openssl command
+certificate_self_signed_command: []
+
+# certs by openssl_certificate module
+certificate_data: []
+certificate_data_simple: []
+certificate_data_simple_scheme:
+  private: key
+  csr: csr
+  crt: crt
+
+# EOF

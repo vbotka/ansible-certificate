@@ -1,0 +1,10 @@
+---
+certificate_acme_dir: "{{ certificate_acme_base_dir }}/etc/letsencrypt"
+certificate_acme_dir_csr: "{{ certificate_acme_dir }}/csr"
+certificate_acme_dir_certs: "{{ certificate_acme_dir }}/archive"
+certificate_acme_dir_private: "{{ certificate_acme_dir }}/keys"
+certificate_acme_dir_challenges: /usr/local/www/apache24/data/.well-known/acme-challenge/
+certificate_acme_owner: root
+certificate_acme_group: wheel
+certificate_acme_dir_mode_private: "0700"
+dddddcertificate_acme_dir_mode_public: "0755"
