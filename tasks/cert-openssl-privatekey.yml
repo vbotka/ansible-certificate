@@ -24,7 +24,6 @@
   loop: "{{ certificate_data }}"
   loop_control:
     label: file:{{ certificate_private_dir }}/{{ item.private }} CN:{{ item.CN | d('UNDEFINED') }}
-  when: not ansible_check_mode
 
 - name: "Cert-openssl-privatekey: Display information on OpenSSL private keys."
   ansible.builtin.debug:

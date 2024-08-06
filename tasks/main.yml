@@ -14,10 +14,10 @@
   when: certificate_debug | bool
   tags: certificate_debug
 
-- name: Import packages.yml
-  ansible.builtin.import_tasks: packages.yml
+- name: Import pkg.yml
+  ansible.builtin.import_tasks: pkg.yml
   when: certificate_install | bool
-  tags: [certificate_packages, certificate_setup]
+  tags: [certificate_pkg, certificate_setup]
 
 - name: Import cert-dirs.yml
   ansible.builtin.import_tasks: cert-dirs.yml

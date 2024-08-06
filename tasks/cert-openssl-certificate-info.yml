@@ -8,7 +8,6 @@
   loop: "{{ certificate_data }}"
   loop_control:
     label: "file:{{ certificate_dir_certs }}/{{ item.crt }} CN:{{ item.CN | d('UNDEFINED') }}"
-  when: not ansible_check_mode
 
 - name: "Cert-openssl-certificate-info: Display information on OpenSSL X.509 certificates."
   ansible.builtin.debug:

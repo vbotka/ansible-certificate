@@ -2,6 +2,7 @@
 - name: "Debug certificate_debug={{ certificate_debug }}"
   vars:
     msg: |-
+      certificate_role_version: {{ certificate_role_version }}
       ansible_architecture: {{ ansible_architecture }}
       ansible_os_family: {{ ansible_os_family }}
       ansible_distribution: {{ ansible_distribution }}
@@ -65,6 +66,7 @@
       {% endfor %}
       {% endfor %}
       {% endif %}
+
       certificate_python_version: {{ certificate_python_version }}
       al_debug: {{ al_debug }}
       al_sanity_packages_required:

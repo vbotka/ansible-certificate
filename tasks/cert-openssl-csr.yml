@@ -47,7 +47,6 @@
   loop: "{{ certificate_data }}"
   loop_control:
     label: " file:{{ certificate_dir_csr }}/{{ item.csr }} CN:{{ item.CN | d('UNDEFINED') }}"
-  when: not ansible_check_mode
 
 - name: "Cert-openssl-csr: Display information on OpenSSL Certificate Signing Requests (CSR)."
   ansible.builtin.debug:
