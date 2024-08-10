@@ -33,6 +33,26 @@ Breaking Changes / Porting Guide
 --------------------------------
 
 
+2.6.5
+=====
+
+Release Summary
+---------------
+Bugfix update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+Bugfixes
+--------
+
+Breaking Changes / Porting Guide
+--------------------------------
+
+
 2.6.3
 =====
 
