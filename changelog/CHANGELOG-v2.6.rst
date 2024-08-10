@@ -48,9 +48,32 @@ Minor Changes
 
 Bugfixes
 --------
+* Default certificate_acme_dir_mode_public="0755"
 
 Breaking Changes / Porting Guide
 --------------------------------
+
+
+2.6.4
+=====
+
+Release Summary
+---------------
+Maintenance and feature update.
+
+Major Changes
+-------------
+* Add var certificate_data_simple
+* Add vars/simple.yml.sample
+* Update vars.yml
+
+Minor Changes
+-------------
+* Update README
+* Split defaults/main.yml to defaults/main/*
+* Remove all 'not ansible_check_mode'. All modules aupport check_mode
+* Add var certificate_role_version
+* Update debug.yml
 
 
 2.6.3
