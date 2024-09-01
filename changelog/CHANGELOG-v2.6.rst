@@ -25,6 +25,7 @@ Minor Changes
 * Remove all 'not ansible_check_mode'. All modules aupport check_mode
 * Add var certificate_role_version
 * Update debug.yml
+* Comment vars/defaults/FreeBSD.yml
 
 Bugfixes
 --------

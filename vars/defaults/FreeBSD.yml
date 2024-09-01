@@ -1,6 +1,7 @@
 ---
 # certificate vars for FreeBSD
 
+# Install pkgdict_*.security
 certificate_packages:
   - security/py-cryptography
   - security/py-openssl
