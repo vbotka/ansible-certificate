@@ -5,35 +5,6 @@ vbotka.certificate 2.6 Release Notes
 .. contents:: Topics
 
 
-2.6.4
-=====
-
-Release Summary
----------------
-Maintenance and feature update.
-
-Major Changes
--------------
-* Add var certificate_data_simple
-* Add vars/simple.yml.sample
-* Update vars.yml
-
-Minor Changes
--------------
-* Update README
-* Split defaults/main.yml to defaults/main/*
-* Remove all 'not ansible_check_mode'. All modules aupport check_mode
-* Add var certificate_role_version
-* Update debug.yml
-* Comment vars/defaults/FreeBSD.yml
-
-Bugfixes
---------
-
-Breaking Changes / Porting Guide
---------------------------------
-
-
 2.6.5
 =====
 
@@ -46,6 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
+* Comment vars/defaults/FreeBSD.yml
+* Update tests/test.yml playbook
 
 Bugfixes
 --------
