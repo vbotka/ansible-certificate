@@ -3,6 +3,26 @@ vbotka.certificate 2.6 Release Notes
 ====================================
 
 .. contents:: Topics
+# BEGIN Commits 2.6.5
+- Update tests/test.yml playbook.
+- Comment vars/defaults/FreeBSD.yml
+- Fix default certificate_acme_dir_mode_public=0755
+- Start 2.6.5 devel.
+# END Commits 2.6.5
+# BEGIN Release notes 2.6.5
+2.6.5
+=====
+Release Summary
+---------------
+Major Changes
+-------------
+Minor Changes
+-------------
+Bugfixes
+--------
+Breaking Changes / Porting Guide
+--------------------------------
+# END Release notes 2.6.5
 
 
 2.6.5
