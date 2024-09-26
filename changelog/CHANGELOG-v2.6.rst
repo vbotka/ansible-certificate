@@ -5,6 +5,32 @@ vbotka.certificate 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.5
+=====
+
+Release Summary
+---------------
+Maintenance and bugfix update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+- Comment vars/defaults/FreeBSD.yml
+- Update tests/test.yml playbook
+- Update python 3.11 in .travis.yml
+- Update tests/test.yml playbook.
+- Comment vars/defaults/FreeBSD.yml
+
+Bugfixes
+--------
+* Default certificate_acme_dir_mode_public="0755"
+
+Breaking Changes / Porting Guide
+--------------------------------
+
+
 2.6.4
 =====
 
@@ -22,15 +48,9 @@ Minor Changes
 -------------
 * Update README
 * Split defaults/main.yml to defaults/main/*
-* Remove all 'not ansible_check_mode'. All modules aupport check_mode
+* Remove all 'not ansible_check_mode'. All modules support check_mode
 * Add var certificate_role_version
 * Update debug.yml
-
-Bugfixes
---------
-
-Breaking Changes / Porting Guide
---------------------------------
 
 
 2.6.3

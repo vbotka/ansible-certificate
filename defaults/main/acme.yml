@@ -7,4 +7,4 @@ certificate_acme_dir_challenges: /usr/local/www/apache24/data/.well-known/acme-c
 certificate_acme_owner: root
 certificate_acme_group: wheel
 certificate_acme_dir_mode_private: "0700"
-dddddcertificate_acme_dir_mode_public: "0755"
+certificate_acme_dir_mode_public: "0755"
