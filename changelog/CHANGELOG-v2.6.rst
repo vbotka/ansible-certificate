@@ -3,26 +3,6 @@ vbotka.certificate 2.6 Release Notes
 ====================================
 
 .. contents:: Topics
-# BEGIN Release notes 2.6.5
-2.6.5
-=====
-Release Summary
----------------
-Major Changes
--------------
-Minor Changes
--------------
-- Update python 3.11 in .travis.yml
-- Update tests/test.yml playbook.
-- Comment vars/defaults/FreeBSD.yml
-- Fix default certificate_acme_dir_mode_public=0755
-- Start 2.6.5 devel.
-
-Bugfixes
---------
-Breaking Changes / Porting Guide
---------------------------------
-# END Release notes 2.6.5
 
 
 2.6.5
