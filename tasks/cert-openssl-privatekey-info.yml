@@ -1,5 +1,6 @@
 ---
 - name: "Cert-openssl-privatekey-info: Get information on OpenSSL private keys."
+  no_log: "{{ not certificate_debug_classified | bool }}"
   community.crypto.openssl_privatekey_info:
     passphrase: "{{ item.passphrase | d(omit) }}"
     path: "{{ certificate_private_dir }}/{{ item.private }}"
@@ -9,13 +10,12 @@
   loop: "{{ certificate_data }}"
   loop_control:
     label: " file:{{ certificate_private_dir }}/{{ item.private }} CN:{{ item.CN | d('UNDEFINED') }}"
-  no_log: "{{ not certificate_debug_classified | bool }}"
 
 - name: "Cert-openssl-privatekey-info: Display information on OpenSSL private keys."
-  ansible.builtin.debug:
-    var: certificate_result_privatekey_info
   when:
     - certificate_debug_classified | bool
     - certificate_result_privatekey_info is defined
+  ansible.builtin.debug:
+    var: certificate_result_privatekey_info
 
 # EOF

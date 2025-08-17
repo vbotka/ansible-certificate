@@ -4,30 +4,30 @@
   block:
 
     - name: "Sanity: Get meta-data."
+      when: galaxy_info is undefined
       ansible.builtin.include_vars:
         file: meta/main.yml
-      when: galaxy_info is undefined
 
     - name: "Sanity: Get role_name."
       ansible.builtin.set_fact:
         al_sanity_role_name: "{{ role_name }}"
 
 - name: "Sanity: Include vbotka.ansible_lib al_sanity_platform."
+  when: certificate_sanity_platform | bool
   ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_sanity_platform
-  when: certificate_sanity_platform | bool
 
 - name: "Sanity: Include vbotka.ansible_lib al_sanity_ansible_version."
+  when: certificate_sanity_ansible_version | bool
   ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_sanity_ansible_version
-  when: certificate_sanity_ansible_version | bool
 
 - name: "Sanity: Include vbotka.ansible_lib al_sanity_packages."
+  when: certificate_sanity_packages | bool
   ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_sanity_packages
-  when: certificate_sanity_packages | bool
 
 # EOF

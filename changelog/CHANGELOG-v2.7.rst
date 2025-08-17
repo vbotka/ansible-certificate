@@ -21,6 +21,8 @@ Major Changes
 
 Minor Changes
 -------------
+* Tasks formatting unified.
+* Update al_supported_versions_override_lists [["13.4", "13.5"], ["14.2", "14.3"]]
 
 Bugfixes
 --------

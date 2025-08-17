@@ -1,35 +1,51 @@
 ---
 - name: "Cert-openssl-privatekey: Generate OpenSSL private keys."
-  community.crypto.openssl_privatekey:
-    attributes: "{{ item.attributes | d(omit) }}"
-    backup: "{{ item.backup | d(certificate_backup_conf) }}"
-    cipher: "{{ item.cipher | d(omit) }}"
-    curve: "{{ item.curve | d(omit) }}"
-    force: "{{ item.force | d(omit) }}" # default: false
-    group: "{{ item.group | d(certificate_private_group) }}"
-    mode: "{{ item.mode | d(certificate_private_file_mode) }}"
-    owner: "{{ item.owner | d(certificate_private_owner) }}"
-    passphrase: "{{ item.passphrase | d(omit) }}"
-    path: "{{ certificate_private_dir }}/{{ item.private }}"
-    select_crypto_backend: "{{ item.backend | d(certificate_default_backend) }}"
-    selevel: "{{ item.selevel | d(omit) }}"
-    serole: "{{ item.serole | d(omit) }}"
-    setype: "{{ item.setype | d(omit) }}"
-    seuser: "{{ item.seuser | d(omit) }}"
-    size: "{{ item.size | d(certificate_default_size) }}"
-    state: "{{ item.state | d(omit) }}" # default: present
-    type: "{{ item.type | d(certificate_default_type) }}"
-    unsafe_writes: "{{ item.unsafe_writes | d(omit) }}" # default: false
-  register: certificate_result_privatekey
-  loop: "{{ certificate_data }}"
-  loop_control:
-    label: file:{{ certificate_private_dir }}/{{ item.private }} CN:{{ item.CN | d('UNDEFINED') }}
+  block:
+
+    - name: "Cert-openssl-privatekey: Generate OpenSSL private keys."
+      register: certificate_result_privatekey
+      community.crypto.openssl_privatekey:
+        attributes: "{{ item.attributes | d(omit) }}"
+        backup: "{{ item.backup | d(certificate_backup_conf) }}"
+        cipher: "{{ item.cipher | d(omit) }}"
+        curve: "{{ item.curve | d(omit) }}"
+        force: "{{ item.force | d(omit) }}" # default: false
+        group: "{{ item.group | d(certificate_private_group) }}"
+        mode: "{{ item.mode | d(certificate_private_file_mode) }}"
+        owner: "{{ item.owner | d(certificate_private_owner) }}"
+        passphrase: "{{ item.passphrase | d(omit) }}"
+        path: "{{ certificate_private_dir }}/{{ item.private }}"
+        select_crypto_backend: "{{ item.backend | d(certificate_default_backend) }}"
+        selevel: "{{ item.selevel | d(omit) }}"
+        serole: "{{ item.serole | d(omit) }}"
+        setype: "{{ item.setype | d(omit) }}"
+        seuser: "{{ item.seuser | d(omit) }}"
+        size: "{{ item.size | d(certificate_default_size) }}"
+        state: "{{ item.state | d(omit) }}" # default: present
+        type: "{{ item.type | d(certificate_default_type) }}"
+        unsafe_writes: "{{ item.unsafe_writes | d(omit) }}" # default: false
+      loop: "{{ certificate_data }}"
+      loop_control:
+        label: file:{{ certificate_private_dir }}/{{ item.private }} CN:{{ item.CN | d('UNDEFINED') }}
+
+  rescue:
+
+    - name: "Cert-openssl-privatekey: Generate OpenSSL private keys failed."
+      ansible.builtin.debug:
+        msg: |
+          ansible_failed_task:
+            {{ ansible_failed_task | to_nice_yaml(indent=2) | indent(2) }}
+          ansible_failed_result:
+            {{ ansible_failed_result | to_nice_yaml(indent=2) | indent(2) }}
+
+    - name: "Cert-openssl-privatekey: End host."
+      ansible.builtin.meta: end_host
 
 - name: "Cert-openssl-privatekey: Display information on OpenSSL private keys."
-  ansible.builtin.debug:
-    var: certificate_result_privatekey
   when:
     - certificate_debug_classified | bool
     - certificate_result_privatekey is defined
+  ansible.builtin.debug:
+    var: certificate_result_privatekey
 
 # EOF

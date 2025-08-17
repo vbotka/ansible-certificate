@@ -16,9 +16,9 @@
       delay: "{{ freebsd_install_delay }}"
 
     - name: "Packages: Debug FreeBSD packages certificate_debug={{ certificate_debug }}"
+      when: certificate_debug | bool
       ansible.builtin.debug:
         var: result
-      when: certificate_debug | bool
 
   rescue:
     - name: "Packages: Rescue FreeBSD packages"
@@ -46,9 +46,9 @@
       loop: "{{ certificate_packages + certificate_packages2 }}"
 
     - name: "Packages: Debug FreeBSD ports certificate_debug={{ certificate_debug }}"
+      when: certificate_debug | bool
       ansible.builtin.debug:
         var: result
-      when: certificate_debug | bool
 
   rescue:
     - name: "Packages: Rescue FreeBSD ports"
@@ -73,9 +73,9 @@
       delay: "{{ linux_install_delay }}"
 
     - name: "Packages: Debug Linux packages certificate_debug={{ certificate_debug }}"
+      when: certificate_debug | bool
       ansible.builtin.debug:
         var: result
-      when: certificate_debug | bool
 
   rescue:
     - name: "Packages: Rescue Linux packages"

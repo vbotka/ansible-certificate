@@ -9,9 +9,9 @@
     - "{{ certificate_dir_certs }}/{{ outer_item.crt }}"
 
 - name: "Cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate."
-  ansible.builtin.debug:
-    msg: "{{ '{}'.format(msg) }}"
   vars:
     msg: "{{ certificate_result_stat.results | json_query('[].{file: item, exists: stat.exists}') | to_yaml }}"
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
 
 # EOF
