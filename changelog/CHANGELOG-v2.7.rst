@@ -10,11 +10,11 @@ vbotka.certificate 2.7 Release Notes
 
 Release Summary
 ---------------
-Major release. Include the role in the collection vbotka.freebsd
+Include the role in the collection vbotka.freebsd
 
 Major Changes
 -------------
-* Update meta
+* Update meta:
   Supported Ansible 2.18
   Freebsd 13.4, 13.5, 14.2, 14.3
   Ubuntu +plucky
