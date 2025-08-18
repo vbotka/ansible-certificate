@@ -11,6 +11,7 @@ vbotka.certificate 2.7 Release Notes
 Release Summary
 ---------------
 Include the role in the collection vbotka.freebsd
+In the collection vbotka.freebsd use vbotka.freebsd.lib
 
 Major Changes
 -------------
@@ -23,9 +24,4 @@ Minor Changes
 -------------
 * Tasks formatting unified.
 * Update al_supported_versions_override_lists [["13.4", "13.5"], ["14.2", "14.3"]]
-
-Bugfixes
---------
-
-Breaking Changes / Porting Guide
---------------------------------
+* Add dictionary certificate_ansible_lib
