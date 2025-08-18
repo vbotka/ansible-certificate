@@ -1,5 +1,6 @@
 ---
 - name: "Cert-openssl-csr-info: Get information on OpenSSL Certificate Signing Requests (CSR)."
+  no_log: "{{ not certificate_debug_classified | bool }}"
   community.crypto.openssl_csr_info:
     path: "{{ certificate_dir_csr }}/{{ item.csr }}"
     select_crypto_backend: "{{ item.backend | d(certificate_default_backend) }}"
@@ -7,13 +8,12 @@
   loop: "{{ certificate_data }}"
   loop_control:
     label: " file:{{ certificate_dir_csr }}/{{ item.csr }} CN:{{ item.CN | d('UNDEFINED') }}"
-  no_log: "{{ not certificate_debug_classified | bool }}"
 
 - name: "Cert-openssl-csr-info: Display information on OpenSSL Certificate Signing Requests (CSR)."
-  ansible.builtin.debug:
-    var: certificate_result_csr_info
   when:
     - certificate_debug_classified | bool
     - certificate_result_csr_info is defined
+  ansible.builtin.debug:
+    var: certificate_result_csr_info
 
 # EOF

@@ -27,7 +27,5 @@ certificate_acme_link_crt: false
 # sanity: override supported versions
 al_supported_versions_override: "{{ al_supported_versions_override_lists | flatten }}"
 al_supported_versions_override_lists:
-  - ["11.3", "11.4"]
-  - ["12.0", "12.1", "12.2", "12.3", "12.4"]
-  - ["13.0", "13.1", "13.2", "13.3"]
-  - ["14.0", "14.1"]
+  - ["13.4", "13.5"]
+  - ["14.2", "14.3"]

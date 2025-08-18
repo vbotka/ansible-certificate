@@ -1,7 +1,9 @@
 ---
-- name: "Cert-openssl-certificate: Block: Generate and/or check OpenSSL certificates"
+- name: "Cert-openssl-certificate: Block: Generate and/or check OpenSSL certificates."
   block:
-    - name: "Cert-openssl-certificate: Generate and/or check OpenSSL certificates"
+
+    - name: "Cert-openssl-certificate: Generate and/or check OpenSSL certificates."
+      register: certificate_result_certificate
       community.crypto.x509_certificate:
         acme_accountkey_path: "{{ item.acme_accountkey_path | d(omit) }}"
         acme_chain: "{{ item.acme_chain | d(omit) }}"
@@ -65,23 +67,28 @@
         valid_at: "{{ item.valid_at | d(omit) }}"
         valid_in: "{{ item.valid_in | d(omit) }}"
         version: "{{ item.version | d(omit) }}"
-      register: certificate_result_certificate
       loop: "{{ certificate_data }}"
       loop_control:
         label: " file:{{ certificate_dir_certs }}/{{ item.crt }} CN:{{ item.CN | d('UNDEFINED') }}"
+
   rescue:
-    - name: "Cert-openssl-certificate: Rescue: Display information on OpenSSL X.509 certificates."
+
+    - name: "Cert-openssl-certificate: Generate and/or check OpenSSL certificates failed."
       ansible.builtin.debug:
-        var: certificate_result_certificate
-      when:
-        - certificate_debug_classified | bool
-        - certificate_result_certificate is defined
+        msg: |
+          ansible_failed_task:
+            {{ ansible_failed_task | to_nice_yaml(indent=2) | indent(2) }}
+          ansible_failed_result:
+            {{ ansible_failed_result | to_nice_yaml(indent=2) | indent(2) }}
+
+    - name: "Cert-openssl-certificate: End host."
+      ansible.builtin.meta: end_host
 
 - name: "Cert-openssl-certificate: Display information on OpenSSL X.509 certificates."
-  ansible.builtin.debug:
-    var: certificate_result_certificate
   when:
     - certificate_debug_classified | bool
     - certificate_result_certificate is defined
+  ansible.builtin.debug:
+    var: certificate_result_certificate
 
 # EOF

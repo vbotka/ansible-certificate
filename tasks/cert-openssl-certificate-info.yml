@@ -1,19 +1,19 @@
 ---
 - name: "Cert-openssl-certificate-info: Get information on OpenSSL X.509 certificates."
+  register: certificate_result_certificate_info
   community.crypto.x509_certificate_info:
     path: "{{ certificate_dir_certs }}/{{ item.crt }}"
     select_crypto_backend: "{{ item.backend | d(certificate_default_backend) }}"
     valid_at: "{{ item.valid_at | d(omit) }}"
-  register: certificate_result_certificate_info
   loop: "{{ certificate_data }}"
   loop_control:
     label: "file:{{ certificate_dir_certs }}/{{ item.crt }} CN:{{ item.CN | d('UNDEFINED') }}"
 
 - name: "Cert-openssl-certificate-info: Display information on OpenSSL X.509 certificates."
-  ansible.builtin.debug:
-    var: certificate_result_certificate_info
   when:
     - certificate_debug_classified | bool
     - certificate_result_certificate_info is defined
+  ansible.builtin.debug:
+    var: certificate_result_certificate_info
 
 # EOF

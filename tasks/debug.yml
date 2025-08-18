@@ -3,6 +3,7 @@
   vars:
     msg: |-
       certificate_role_version: {{ certificate_role_version }}
+      ansible_role_name: {{ ansible_role_name }}
       ansible_architecture: {{ ansible_architecture }}
       ansible_os_family: {{ ansible_os_family }}
       ansible_distribution: {{ ansible_distribution }}

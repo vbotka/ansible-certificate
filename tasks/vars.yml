@@ -1,17 +1,12 @@
 ---
-- name: Include OS vars
-  block:
+- name: "Vars: Include OS vars"
+  vars:
+    al_os_vars_path: "{{ ansible_parent_role_paths.0 }}"
+  ansible.builtin.include_role:
+    name: "{{ certificate_ansible_lib[ansible_role_name] }}"
+    tasks_from: al_include_os_vars_path_incr
 
-    - name: "Vars: Set variables for al_include_os_vars_path"
-      ansible.builtin.set_fact:
-        al_os_vars_path: "{{ role_path }}"
-
-    - name: "Vars: Include OS vars"
-      ansible.builtin.include_role:
-        name: vbotka.ansible_lib
-        tasks_from: al_include_os_vars_path_incr
-
-- name: Set flavors
+- name: Set flavors.
   when:
     - freebsd_flavors_enable | bool
     - ansible_os_family == 'FreeBSD'
@@ -22,29 +17,26 @@
         al_bsd_ports_list: "{{ certificate_packages }}"
         al_bsd_ports_flavors: "{{ freebsd_flavors }}"
 
-    - name: "Vars: Set flavor"
+    - name: "Vars: Set flavor."
       ansible.builtin.include_role:
         name: vbotka.ansible_lib
         tasks_from: al_bsd_ports_set_flavor
 
-    - name: "Vars: Get results"
+    - name: "Vars: Get results."
       ansible.builtin.set_fact:
         certificate_packages: "{{ al_bsd_ports_list }}"
 
-- name: Add certificate_data_simple to certificate_data
+- name: "Vars: Add certificate_data_simple to certificate_data"
   when: certificate_data_simple | length > 0
-  block:
-
-    - name: "Vars: Add certificate_data_simple to certificate_data"
-      ansible.builtin.set_fact:
-        certificate_data: "{{ certificate_data + _data | from_yaml }}"
-      vars:
-        _data: |
-          [{% for name in certificate_data_simple %}
-          { CN: {{ name }},
-          {% for k, v in certificate_data_simple_scheme.items() %}
-          {{ k }}: {{ name }}.{{ v }},
-          {% endfor %} },
-          {% endfor %}]
+  vars:
+    data: |
+      [{% for name in certificate_data_simple %}
+      { CN: {{ name }},
+      {% for k, v in certificate_data_simple_scheme.items() %}
+      {{ k }}: {{ name }}.{{ v }},
+      {% endfor %} },
+      {% endfor %}]
+  ansible.builtin.set_fact:
+    certificate_data: "{{ certificate_data + data | from_yaml }}"
 
 # EOF

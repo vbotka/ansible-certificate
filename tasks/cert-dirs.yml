@@ -12,13 +12,13 @@
     - "{{ certificate_dir }}/csr"
 
 - name: "Cert-dirs: Link certs to crt in {{ certificate_dir }}"
+  when: certificate_link_crt | bool
   ansible.builtin.file:
     state: link
     src: "{{ certificate_dir }}/certs"
     dest: "{{ certificate_dir }}/crt"
     owner: "{{ certificate_owner }}"
     group: "{{ certificate_group }}"
-  when: certificate_link_crt | bool
 
 - name: "Cert-dirs: Create {{ certificate_dir ~ '/private' }}"
   ansible.builtin.file:

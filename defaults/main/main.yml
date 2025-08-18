@@ -1,6 +1,6 @@
 ---
 # certificate defaults
-certificate_role_version: 2.6.5
+certificate_role_version: 2.7.0
 
 certificate_install: true
 certificate_debug: false
@@ -44,5 +44,10 @@ certificate_data_simple_scheme:
   private: key
   csr: csr
   crt: crt
+
+# Use vbotka.freebsd.lib in collection vbotka.freebsd
+certificate_ansible_lib:
+  vbotka.certificate: vbotka.ansible_lib
+  vbotka.freebsd.certificate: vbotka.freebsd.lib
 
 # EOF
