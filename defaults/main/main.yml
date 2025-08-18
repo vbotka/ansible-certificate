@@ -45,4 +45,9 @@ certificate_data_simple_scheme:
   csr: csr
   crt: crt
 
+# Use vbotka.freebsd.lib in collection vbotka.freebsd
+certificate_ansible_lib:
+  vbotka.certificate: vbotka.ansible_lib
+  vbotka.freebsd.certificate: vbotka.freebsd.lib
+
 # EOF

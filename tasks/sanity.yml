@@ -15,19 +15,19 @@
 - name: "Sanity: Include vbotka.ansible_lib al_sanity_platform."
   when: certificate_sanity_platform | bool
   ansible.builtin.include_role:
-    name: vbotka.ansible_lib
+    name: "{{ certificate_ansible_lib[ansible_role_name] }}"
     tasks_from: al_sanity_platform
 
 - name: "Sanity: Include vbotka.ansible_lib al_sanity_ansible_version."
   when: certificate_sanity_ansible_version | bool
   ansible.builtin.include_role:
-    name: vbotka.ansible_lib
+    name: "{{ certificate_ansible_lib[ansible_role_name] }}"
     tasks_from: al_sanity_ansible_version
 
 - name: "Sanity: Include vbotka.ansible_lib al_sanity_packages."
   when: certificate_sanity_packages | bool
   ansible.builtin.include_role:
-    name: vbotka.ansible_lib
+    name: "{{ certificate_ansible_lib[ansible_role_name] }}"
     tasks_from: al_sanity_packages
 
 # EOF

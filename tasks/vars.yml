@@ -3,7 +3,7 @@
   vars:
     al_os_vars_path: "{{ ansible_parent_role_paths.0 }}"
   ansible.builtin.include_role:
-    name: vbotka.ansible_lib
+    name: "{{ certificate_ansible_lib[ansible_role_name] }}"
     tasks_from: al_include_os_vars_path_incr
 
 - name: Set flavors.
