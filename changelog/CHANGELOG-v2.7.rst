@@ -10,6 +10,7 @@ vbotka.certificate 2.7 Release Notes
 
 Release Summary
 ---------------
+Fix lib includes.
 
 Major Changes
 -------------
