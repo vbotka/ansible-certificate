@@ -1,6 +1,6 @@
 ---
 # certificate defaults
-certificate_role_version: 2.7.0
+certificate_role_version: 2.7.1
 
 certificate_install: true
 certificate_debug: false

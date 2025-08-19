@@ -19,7 +19,7 @@
 
     - name: "Vars: Set flavor."
       ansible.builtin.include_role:
-        name: vbotka.ansible_lib
+        name: "{{ certificate_ansible_lib[ansible_role_name] }}"
         tasks_from: al_bsd_ports_set_flavor
 
     - name: "Vars: Get results."

@@ -4,6 +4,8 @@
 [![Build Status](https://app.travis-ci.com/vbotka/ansible-certificate.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-certificate)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-certificate)](https://github.com/vbotka/ansible-certificate/tags)
 
+This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/) as [vbotka.freebsd.certificate](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate)
+
 [Ansible role](https://galaxy.ansible.com/vbotka/certificate/). Manage SSL certificates.
 
 Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-certificate/issues).
@@ -19,14 +21,14 @@ Not tested yet: acme, entrust, ownca
 
 ## Requirements and dependencies
 
-### Roles
-
-- [ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib) library of Ansible tasks.
-
 ### Collections
 
 - [community.crypto](https://galaxy.ansible.com/community/crypto)
 - [community.general](https://galaxy.ansible.com/community/general)
+
+### Roles
+
+- [ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib) library of Ansible tasks.
 
 ### Packages
 
