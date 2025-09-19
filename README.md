@@ -41,7 +41,7 @@ Not tested yet: acme, entrust, ownca
 
 - See default variables in *defaults/main.yml*
 - See OS specific variables in *vars/defaults/*
-- See examples in *vars/main.yml*
+- See examples in *vars/\*.yml.sample*
 
 ### freebsd_flavors_enable (default: false)
 
