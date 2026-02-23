@@ -9,7 +9,7 @@
 - name: Set flavors.
   when:
     - freebsd_flavors_enable | bool
-    - ansible_os_family == 'FreeBSD'
+    - ansible_facts.os_family == 'FreeBSD'
   block:
 
     - name: "Vars: Set variables for al_bsd_ports_set_flavor"

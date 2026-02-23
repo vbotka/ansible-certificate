@@ -30,6 +30,6 @@ al_sanity_packages_required:
   FreeBSD:
     default:
       - py{{ certificate_python_version }}-cryptography
-      - py{{ certificate_python_version }}-openssl
+      - py{{ certificate_python_version }}-pyopenssl
       - py{{ certificate_python_version }}-acme
       - acme-tiny
