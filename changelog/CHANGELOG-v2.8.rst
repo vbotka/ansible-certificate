@@ -18,6 +18,8 @@ Major Changes
 Minor Changes
 -------------
 * Meta: Ansible 2.20; FreeBSD 13.5, 14.3, and 15.0
+* Port security/py-openssl moved to py-pyopenssl
+* Variables ansible_* moved to the directory ansible_facts
 
 
 2.8.0

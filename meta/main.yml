@@ -27,6 +27,3 @@ galaxy_info:
     - ssl
     - acme
 dependencies: []
-collections:
-  - community.crypto
-  - community.general

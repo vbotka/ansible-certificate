@@ -4,7 +4,7 @@
 # Install pkgdict_*.security
 certificate_packages:
   - security/py-cryptography
-  - security/py-openssl
+  - security/py-pyopenssl
   - security/py-acme
 
 certificate_packages2:
@@ -29,3 +29,4 @@ al_supported_versions_override: "{{ al_supported_versions_override_lists | flatt
 al_supported_versions_override_lists:
   - ["13.4", "13.5"]
   - ["14.2", "14.3"]
+  - ["15.0"]
