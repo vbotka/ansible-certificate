@@ -18,3 +18,4 @@ Major Changes
 
 Minor Changes
 -------------
+* Update FreeBSD supported versions override default.
