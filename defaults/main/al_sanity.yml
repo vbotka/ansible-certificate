@@ -19,10 +19,6 @@ al_sanity_ansible_version_warning: true
 al_sanity_packages_required:
   Ubuntu:
     default: [python3-openssl, python3-cryptography, acme-tiny]
-    bionic: [python-openssl, python-cryptography, acme-tiny]
-    cosmic: [python-openssl, python-cryptography, acme-tiny]
-    disco: [python-openssl, python-cryptography, acme-tiny]
-    eoan: [python-openssl, python-cryptography, acme-tiny]
     focal:
       - [python-openssl, python3-openssl]
       - [python-cryptography, python3-cryptography]
